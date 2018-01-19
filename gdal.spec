@@ -4,12 +4,12 @@
 #
 Name     : gdal
 Version  : 2.2.3
-Release  : 1
+Release  : 2
 URL      : http://download.osgeo.org/gdal/2.2.3/gdal-2.2.3.tar.xz
 Source0  : http://download.osgeo.org/gdal/2.2.3/gdal-2.2.3.tar.xz
 Summary  : Geospatial Data Abstraction Library
 Group    : Development/Tools
-License  : Apache-2.0 BSD-3-Clause LGPL-2.0 Libpng MIT Qhull
+License  : Apache-2.0 BSD-3-Clause LGPL-2.0 Libpng MIT Public-Domain Qhull
 Requires: gdal-bin
 Requires: gdal-lib
 Requires: gdal-data
@@ -86,12 +86,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1516318355
+export SOURCE_DATE_EPOCH=1516320010
 %configure --disable-static
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1516318355
+export SOURCE_DATE_EPOCH=1516320010
 rm -rf %{buildroot}
 %make_install
 
