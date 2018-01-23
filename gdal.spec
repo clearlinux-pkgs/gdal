@@ -4,16 +4,16 @@
 #
 Name     : gdal
 Version  : 2.2.3
-Release  : 2
+Release  : 3
 URL      : http://download.osgeo.org/gdal/2.2.3/gdal-2.2.3.tar.xz
 Source0  : http://download.osgeo.org/gdal/2.2.3/gdal-2.2.3.tar.xz
 Summary  : Geospatial Data Abstraction Library
 Group    : Development/Tools
 License  : Apache-2.0 BSD-3-Clause LGPL-2.0 Libpng MIT Public-Domain Qhull
 Requires: gdal-bin
+Requires: gdal-config
 Requires: gdal-lib
 Requires: gdal-data
-Requires: gdal-config
 BuildRequires : curl-dev
 BuildRequires : hdf5-dev
 BuildRequires : libjpeg-turbo-dev
@@ -86,14 +86,17 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1516320010
+export SOURCE_DATE_EPOCH=1516667177
 %configure --disable-static
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1516320010
+export SOURCE_DATE_EPOCH=1516667177
 rm -rf %{buildroot}
 %make_install
+## make_install_append content
+install -D %{buildroot}/usr/etc/bash_completion.d/gdal-bash-completion.sh %{buildroot}/usr/share/bash-completion/completions/gdal-bash-completion.sh
+## make_install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -128,7 +131,7 @@ rm -rf %{buildroot}
 
 %files config
 %defattr(-,root,root,-)
-%config /usr/etc/bash_completion.d/gdal-bash-completion.sh
+%exclude /usr/etc/bash_completion.d/gdal-bash-completion.sh
 
 %files data
 %defattr(-,root,root,-)
@@ -136,6 +139,7 @@ rm -rf %{buildroot}
 /usr/share/GDALLogoColor.svg
 /usr/share/GDALLogoGS.svg
 /usr/share/LICENSE.TXT
+/usr/share/bash-completion/completions/gdal-bash-completion.sh
 /usr/share/compdcs.csv
 /usr/share/coordinate_axis.csv
 /usr/share/cubewerx_extra.wkt
