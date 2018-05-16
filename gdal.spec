@@ -4,7 +4,7 @@
 #
 Name     : gdal
 Version  : 2.2.3
-Release  : 5
+Release  : 6
 URL      : http://download.osgeo.org/gdal/2.2.3/gdal-2.2.3.tar.xz
 Source0  : http://download.osgeo.org/gdal/2.2.3/gdal-2.2.3.tar.xz
 Summary  : Geospatial Data Abstraction Library
