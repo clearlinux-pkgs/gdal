@@ -22,7 +22,7 @@ BuildRequires : pbr
 BuildRequires : pcre-dev
 BuildRequires : pip
 BuildRequires : pkgconfig(bash-completion)
-BuildRequires : python-dev
+
 BuildRequires : python3-dev
 BuildRequires : setuptools
 BuildRequires : zlib-dev
