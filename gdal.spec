@@ -4,7 +4,7 @@
 #
 Name     : gdal
 Version  : 2.2.3
-Release  : 8
+Release  : 9
 URL      : http://download.osgeo.org/gdal/2.2.3/gdal-2.2.3.tar.xz
 Source0  : http://download.osgeo.org/gdal/2.2.3/gdal-2.2.3.tar.xz
 Summary  : Geospatial Data Abstraction Library
@@ -97,13 +97,13 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1553097717
+export SOURCE_DATE_EPOCH=1553098006
 export LDFLAGS="${LDFLAGS} -fno-lto"
-%configure --disable-static --datarootdir=/usr/share/gdal
+%configure --disable-static --datadir=/usr/share/gdal
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1553097717
+export SOURCE_DATE_EPOCH=1553098006
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gdal
 cp LICENSE.TXT %{buildroot}/usr/share/package-licenses/gdal/LICENSE.TXT
@@ -157,96 +157,96 @@ install -D %{buildroot}/usr/etc/bash_completion.d/gdal-bash-completion.sh %{buil
 
 %files data
 %defattr(-,root,root,-)
-/usr/share/GDALLogoBW.svg
-/usr/share/GDALLogoColor.svg
-/usr/share/GDALLogoGS.svg
-/usr/share/LICENSE.TXT
 /usr/share/bash-completion/completions/gdal-bash-completion.sh
-/usr/share/compdcs.csv
-/usr/share/coordinate_axis.csv
-/usr/share/cubewerx_extra.wkt
-/usr/share/datum_shift.csv
-/usr/share/default.rsc
-/usr/share/ecw_cs.wkt
-/usr/share/ellipsoid.csv
-/usr/share/epsg.wkt
-/usr/share/esri_StatePlane_extra.wkt
-/usr/share/esri_Wisconsin_extra.wkt
-/usr/share/esri_extra.wkt
-/usr/share/gcs.csv
-/usr/share/gcs.override.csv
-/usr/share/gdal_datum.csv
-/usr/share/gdalicon.png
-/usr/share/gdalvrt.xsd
-/usr/share/geoccs.csv
-/usr/share/gml_registry.xml
-/usr/share/gmlasconf.xml
-/usr/share/gmlasconf.xsd
-/usr/share/gt_datum.csv
-/usr/share/gt_ellips.csv
-/usr/share/header.dxf
-/usr/share/inspire_cp_BasicPropertyUnit.gfs
-/usr/share/inspire_cp_CadastralBoundary.gfs
-/usr/share/inspire_cp_CadastralParcel.gfs
-/usr/share/inspire_cp_CadastralZoning.gfs
-/usr/share/jpfgdgml_AdmArea.gfs
-/usr/share/jpfgdgml_AdmBdry.gfs
-/usr/share/jpfgdgml_AdmPt.gfs
-/usr/share/jpfgdgml_BldA.gfs
-/usr/share/jpfgdgml_BldL.gfs
-/usr/share/jpfgdgml_Cntr.gfs
-/usr/share/jpfgdgml_CommBdry.gfs
-/usr/share/jpfgdgml_CommPt.gfs
-/usr/share/jpfgdgml_Cstline.gfs
-/usr/share/jpfgdgml_ElevPt.gfs
-/usr/share/jpfgdgml_GCP.gfs
-/usr/share/jpfgdgml_LeveeEdge.gfs
-/usr/share/jpfgdgml_RailCL.gfs
-/usr/share/jpfgdgml_RdASL.gfs
-/usr/share/jpfgdgml_RdArea.gfs
-/usr/share/jpfgdgml_RdCompt.gfs
-/usr/share/jpfgdgml_RdEdg.gfs
-/usr/share/jpfgdgml_RdMgtBdry.gfs
-/usr/share/jpfgdgml_RdSgmtA.gfs
-/usr/share/jpfgdgml_RvrMgtBdry.gfs
-/usr/share/jpfgdgml_SBAPt.gfs
-/usr/share/jpfgdgml_SBArea.gfs
-/usr/share/jpfgdgml_SBBdry.gfs
-/usr/share/jpfgdgml_WA.gfs
-/usr/share/jpfgdgml_WL.gfs
-/usr/share/jpfgdgml_WStrA.gfs
-/usr/share/jpfgdgml_WStrL.gfs
-/usr/share/netcdf_config.xsd
-/usr/share/nitf_spec.xml
-/usr/share/nitf_spec.xsd
-/usr/share/ogrvrt.xsd
-/usr/share/osmconf.ini
-/usr/share/ozi_datum.csv
-/usr/share/ozi_ellips.csv
-/usr/share/pci_datum.txt
-/usr/share/pci_ellips.txt
-/usr/share/pcs.csv
-/usr/share/pcs.override.csv
-/usr/share/plscenesconf.json
-/usr/share/prime_meridian.csv
-/usr/share/projop_wparm.csv
-/usr/share/ruian_vf_ob_v1.gfs
-/usr/share/ruian_vf_st_uvoh_v1.gfs
-/usr/share/ruian_vf_st_v1.gfs
-/usr/share/ruian_vf_v1.gfs
-/usr/share/s57agencies.csv
-/usr/share/s57attributes.csv
-/usr/share/s57expectedinput.csv
-/usr/share/s57objectclasses.csv
-/usr/share/seed_2d.dgn
-/usr/share/seed_3d.dgn
-/usr/share/stateplane.csv
-/usr/share/trailer.dxf
-/usr/share/unit_of_measure.csv
-/usr/share/vdv452.xml
-/usr/share/vdv452.xsd
-/usr/share/vertcs.csv
-/usr/share/vertcs.override.csv
+/usr/share/gdal/GDALLogoBW.svg
+/usr/share/gdal/GDALLogoColor.svg
+/usr/share/gdal/GDALLogoGS.svg
+/usr/share/gdal/LICENSE.TXT
+/usr/share/gdal/compdcs.csv
+/usr/share/gdal/coordinate_axis.csv
+/usr/share/gdal/cubewerx_extra.wkt
+/usr/share/gdal/datum_shift.csv
+/usr/share/gdal/default.rsc
+/usr/share/gdal/ecw_cs.wkt
+/usr/share/gdal/ellipsoid.csv
+/usr/share/gdal/epsg.wkt
+/usr/share/gdal/esri_StatePlane_extra.wkt
+/usr/share/gdal/esri_Wisconsin_extra.wkt
+/usr/share/gdal/esri_extra.wkt
+/usr/share/gdal/gcs.csv
+/usr/share/gdal/gcs.override.csv
+/usr/share/gdal/gdal_datum.csv
+/usr/share/gdal/gdalicon.png
+/usr/share/gdal/gdalvrt.xsd
+/usr/share/gdal/geoccs.csv
+/usr/share/gdal/gml_registry.xml
+/usr/share/gdal/gmlasconf.xml
+/usr/share/gdal/gmlasconf.xsd
+/usr/share/gdal/gt_datum.csv
+/usr/share/gdal/gt_ellips.csv
+/usr/share/gdal/header.dxf
+/usr/share/gdal/inspire_cp_BasicPropertyUnit.gfs
+/usr/share/gdal/inspire_cp_CadastralBoundary.gfs
+/usr/share/gdal/inspire_cp_CadastralParcel.gfs
+/usr/share/gdal/inspire_cp_CadastralZoning.gfs
+/usr/share/gdal/jpfgdgml_AdmArea.gfs
+/usr/share/gdal/jpfgdgml_AdmBdry.gfs
+/usr/share/gdal/jpfgdgml_AdmPt.gfs
+/usr/share/gdal/jpfgdgml_BldA.gfs
+/usr/share/gdal/jpfgdgml_BldL.gfs
+/usr/share/gdal/jpfgdgml_Cntr.gfs
+/usr/share/gdal/jpfgdgml_CommBdry.gfs
+/usr/share/gdal/jpfgdgml_CommPt.gfs
+/usr/share/gdal/jpfgdgml_Cstline.gfs
+/usr/share/gdal/jpfgdgml_ElevPt.gfs
+/usr/share/gdal/jpfgdgml_GCP.gfs
+/usr/share/gdal/jpfgdgml_LeveeEdge.gfs
+/usr/share/gdal/jpfgdgml_RailCL.gfs
+/usr/share/gdal/jpfgdgml_RdASL.gfs
+/usr/share/gdal/jpfgdgml_RdArea.gfs
+/usr/share/gdal/jpfgdgml_RdCompt.gfs
+/usr/share/gdal/jpfgdgml_RdEdg.gfs
+/usr/share/gdal/jpfgdgml_RdMgtBdry.gfs
+/usr/share/gdal/jpfgdgml_RdSgmtA.gfs
+/usr/share/gdal/jpfgdgml_RvrMgtBdry.gfs
+/usr/share/gdal/jpfgdgml_SBAPt.gfs
+/usr/share/gdal/jpfgdgml_SBArea.gfs
+/usr/share/gdal/jpfgdgml_SBBdry.gfs
+/usr/share/gdal/jpfgdgml_WA.gfs
+/usr/share/gdal/jpfgdgml_WL.gfs
+/usr/share/gdal/jpfgdgml_WStrA.gfs
+/usr/share/gdal/jpfgdgml_WStrL.gfs
+/usr/share/gdal/netcdf_config.xsd
+/usr/share/gdal/nitf_spec.xml
+/usr/share/gdal/nitf_spec.xsd
+/usr/share/gdal/ogrvrt.xsd
+/usr/share/gdal/osmconf.ini
+/usr/share/gdal/ozi_datum.csv
+/usr/share/gdal/ozi_ellips.csv
+/usr/share/gdal/pci_datum.txt
+/usr/share/gdal/pci_ellips.txt
+/usr/share/gdal/pcs.csv
+/usr/share/gdal/pcs.override.csv
+/usr/share/gdal/plscenesconf.json
+/usr/share/gdal/prime_meridian.csv
+/usr/share/gdal/projop_wparm.csv
+/usr/share/gdal/ruian_vf_ob_v1.gfs
+/usr/share/gdal/ruian_vf_st_uvoh_v1.gfs
+/usr/share/gdal/ruian_vf_st_v1.gfs
+/usr/share/gdal/ruian_vf_v1.gfs
+/usr/share/gdal/s57agencies.csv
+/usr/share/gdal/s57attributes.csv
+/usr/share/gdal/s57expectedinput.csv
+/usr/share/gdal/s57objectclasses.csv
+/usr/share/gdal/seed_2d.dgn
+/usr/share/gdal/seed_3d.dgn
+/usr/share/gdal/stateplane.csv
+/usr/share/gdal/trailer.dxf
+/usr/share/gdal/unit_of_measure.csv
+/usr/share/gdal/vdv452.xml
+/usr/share/gdal/vdv452.xsd
+/usr/share/gdal/vertcs.csv
+/usr/share/gdal/vertcs.override.csv
 
 %files dev
 %defattr(-,root,root,-)
