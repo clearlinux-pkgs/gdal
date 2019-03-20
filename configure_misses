@@ -76,10 +76,6 @@ Configure miss: Xerces C++ Parser
 Configure miss: Expat XML Parser
 Configure miss: LIBKML
 Configure miss: Google libkml
-Configure miss: SQLConnect in -lodbc
-Configure miss: SQLInstallDriverEx in -lodbcinst
-Configure miss: main in -lodbc32
-Configure miss: SQLInstallDriverEx in -lodbccp32
 Configure miss: if Oracle support is enabled
 Configure miss: curl_global_init in -lcurl
 Configure miss: xmlParseDoc in -lxml2

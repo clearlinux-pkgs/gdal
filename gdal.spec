@@ -4,27 +4,28 @@
 #
 Name     : gdal
 Version  : 2.2.3
-Release  : 7
+Release  : 8
 URL      : http://download.osgeo.org/gdal/2.2.3/gdal-2.2.3.tar.xz
 Source0  : http://download.osgeo.org/gdal/2.2.3/gdal-2.2.3.tar.xz
 Summary  : Geospatial Data Abstraction Library
 Group    : Development/Tools
 License  : Apache-2.0 BSD-3-Clause LGPL-2.0 Libpng MIT Public-Domain Qhull
-Requires: gdal-bin
-Requires: gdal-config
-Requires: gdal-lib
-Requires: gdal-data
+Requires: gdal-bin = %{version}-%{release}
+Requires: gdal-config = %{version}-%{release}
+Requires: gdal-data = %{version}-%{release}
+Requires: gdal-lib = %{version}-%{release}
+Requires: gdal-license = %{version}-%{release}
+BuildRequires : buildreq-cpan
+BuildRequires : buildreq-distutils3
+BuildRequires : buildreq-qmake
 BuildRequires : curl-dev
 BuildRequires : hdf5-dev
 BuildRequires : libjpeg-turbo-dev
 BuildRequires : libxml2-dev
-BuildRequires : pbr
 BuildRequires : pcre-dev
-BuildRequires : pip
 BuildRequires : pkgconfig(bash-completion)
-
-BuildRequires : python3-dev
-BuildRequires : setuptools
+BuildRequires : pkgconfig(zlib)
+BuildRequires : unixODBC-dev
 BuildRequires : zlib-dev
 
 %description
@@ -34,8 +35,9 @@ manually.
 %package bin
 Summary: bin components for the gdal package.
 Group: Binaries
-Requires: gdal-data
-Requires: gdal-config
+Requires: gdal-data = %{version}-%{release}
+Requires: gdal-config = %{version}-%{release}
+Requires: gdal-license = %{version}-%{release}
 
 %description bin
 bin components for the gdal package.
@@ -60,10 +62,10 @@ data components for the gdal package.
 %package dev
 Summary: dev components for the gdal package.
 Group: Development
-Requires: gdal-lib
-Requires: gdal-bin
-Requires: gdal-data
-Provides: gdal-devel
+Requires: gdal-lib = %{version}-%{release}
+Requires: gdal-bin = %{version}-%{release}
+Requires: gdal-data = %{version}-%{release}
+Provides: gdal-devel = %{version}-%{release}
 
 %description dev
 dev components for the gdal package.
@@ -72,10 +74,19 @@ dev components for the gdal package.
 %package lib
 Summary: lib components for the gdal package.
 Group: Libraries
-Requires: gdal-data
+Requires: gdal-data = %{version}-%{release}
+Requires: gdal-license = %{version}-%{release}
 
 %description lib
 lib components for the gdal package.
+
+
+%package license
+Summary: license components for the gdal package.
+Group: Default
+
+%description license
+license components for the gdal package.
 
 
 %prep
@@ -86,17 +97,28 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1516667177
-%configure --disable-static
+export SOURCE_DATE_EPOCH=1553097717
+export LDFLAGS="${LDFLAGS} -fno-lto"
+%configure --disable-static --datarootdir=/usr/share/gdal
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1516667177
+export SOURCE_DATE_EPOCH=1553097717
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/gdal
+cp LICENSE.TXT %{buildroot}/usr/share/package-licenses/gdal/LICENSE.TXT
+cp alg/internal_libqhull/COPYING.txt %{buildroot}/usr/share/package-licenses/gdal/alg_internal_libqhull_COPYING.txt
+cp frmts/gif/giflib/COPYING %{buildroot}/usr/share/package-licenses/gdal/frmts_gif_giflib_COPYING
+cp frmts/mrf/libLERC/LICENSE.TXT %{buildroot}/usr/share/package-licenses/gdal/frmts_mrf_libLERC_LICENSE.TXT
+cp frmts/pcraster/libcsf/COPYING %{buildroot}/usr/share/package-licenses/gdal/frmts_pcraster_libcsf_COPYING
+cp frmts/png/libpng/LICENSE %{buildroot}/usr/share/package-licenses/gdal/frmts_png_libpng_LICENSE
+cp ogr/ogrsf_frmts/geojson/libjson/COPYING %{buildroot}/usr/share/package-licenses/gdal/ogr_ogrsf_frmts_geojson_libjson_COPYING
+cp ogr/ogrsf_frmts/shape/COPYING %{buildroot}/usr/share/package-licenses/gdal/ogr_ogrsf_frmts_shape_COPYING
+cp port/LICENCE_minizip %{buildroot}/usr/share/package-licenses/gdal/port_LICENCE_minizip
 %make_install
-## make_install_append content
+## install_append content
 install -D %{buildroot}/usr/etc/bash_completion.d/gdal-bash-completion.sh %{buildroot}/usr/share/bash-completion/completions/gdal-bash-completion.sh
-## make_install_append end
+## install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -236,3 +258,15 @@ install -D %{buildroot}/usr/etc/bash_completion.d/gdal-bash-completion.sh %{buil
 %defattr(-,root,root,-)
 /usr/lib64/libgdal.so.20
 /usr/lib64/libgdal.so.20.3.2
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/gdal/LICENSE.TXT
+/usr/share/package-licenses/gdal/alg_internal_libqhull_COPYING.txt
+/usr/share/package-licenses/gdal/frmts_gif_giflib_COPYING
+/usr/share/package-licenses/gdal/frmts_mrf_libLERC_LICENSE.TXT
+/usr/share/package-licenses/gdal/frmts_pcraster_libcsf_COPYING
+/usr/share/package-licenses/gdal/frmts_png_libpng_LICENSE
+/usr/share/package-licenses/gdal/ogr_ogrsf_frmts_geojson_libjson_COPYING
+/usr/share/package-licenses/gdal/ogr_ogrsf_frmts_shape_COPYING
+/usr/share/package-licenses/gdal/port_LICENCE_minizip

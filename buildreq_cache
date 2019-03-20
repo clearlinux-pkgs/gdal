@@ -1,0 +1,9 @@
+2.2.3
+curl-dev
+libjpeg-turbo-dev
+libxml2-dev
+pcre-dev
+pkgconfig(bash-completion)
+pkgconfig(zlib)
+unixODBC-dev
+zlib-dev
