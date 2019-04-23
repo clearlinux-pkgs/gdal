@@ -4,7 +4,7 @@
 #
 Name     : gdal
 Version  : 2.2.3
-Release  : 9
+Release  : 10
 URL      : http://download.osgeo.org/gdal/2.2.3/gdal-2.2.3.tar.xz
 Source0  : http://download.osgeo.org/gdal/2.2.3/gdal-2.2.3.tar.xz
 Summary  : Geospatial Data Abstraction Library
@@ -17,14 +17,15 @@ Requires: gdal-lib = %{version}-%{release}
 Requires: gdal-license = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : buildreq-distutils3
-BuildRequires : buildreq-qmake
 BuildRequires : curl-dev
 BuildRequires : hdf5-dev
 BuildRequires : libjpeg-turbo-dev
+BuildRequires : libpng-dev
 BuildRequires : libxml2-dev
 BuildRequires : pcre-dev
 BuildRequires : pkgconfig(bash-completion)
 BuildRequires : pkgconfig(zlib)
+BuildRequires : tiff-dev
 BuildRequires : unixODBC-dev
 BuildRequires : zlib-dev
 
@@ -66,6 +67,7 @@ Requires: gdal-lib = %{version}-%{release}
 Requires: gdal-bin = %{version}-%{release}
 Requires: gdal-data = %{version}-%{release}
 Provides: gdal-devel = %{version}-%{release}
+Requires: gdal = %{version}-%{release}
 
 %description dev
 dev components for the gdal package.
@@ -97,13 +99,13 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1553098006
+export SOURCE_DATE_EPOCH=1556057283
 export LDFLAGS="${LDFLAGS} -fno-lto"
-%configure --disable-static --datadir=/usr/share/gdal
+%configure --disable-static --datadir=/usr/share/gdal --datadir=/usr/share/gdal --with-libtiff=yes --with-png=yes
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1553098006
+export SOURCE_DATE_EPOCH=1556057283
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gdal
 cp LICENSE.TXT %{buildroot}/usr/share/package-licenses/gdal/LICENSE.TXT

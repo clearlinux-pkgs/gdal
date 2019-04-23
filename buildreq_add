@@ -1,3 +1,5 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
 hdf5-dev
+libpng-dev
+tiff-dev

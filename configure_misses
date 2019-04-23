@@ -26,12 +26,8 @@ Configure miss: Mopen in -lcsf
 Configure miss: csf.h usability
 Configure miss: csf.h presence
 Configure miss: csf.h
-Configure miss: libpng... checking for png_set_IHDR in -lpng
-Configure miss: png.h usability
-Configure miss: png.h presence
-Configure miss: png.h
 Configure miss: gta_version in -lgta
-Configure miss: libtiff... checking for TIFFScanlineSize64 in -ltiff
+Configure miss: XTIFFClientOpen in -lgeotiff
 Configure miss: DGifOpenFileName in -lgif
 Configure miss: gif_lib.h usability
 Configure miss: gif_lib.h presence
