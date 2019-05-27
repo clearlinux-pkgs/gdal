@@ -3,6 +3,7 @@ libSFCGAL.so.1
 libc.so.6
 libcrypto.so.1.1
 libdl.so.2
+libexpat.so.1
 libgcc_s.so.1
 libgeos_c.so.1
 libhdf5.so.103
@@ -15,6 +16,9 @@ libpng16.so.16
 libpq.so.5
 libproj.so.15
 libpthread.so.0
+libqhull.so.7
 libstdc++.so.6
 libtiff.so.5
+libwebp.so.7
+libxerces-c-3.2.so
 libz.so.1

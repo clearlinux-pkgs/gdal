@@ -4,7 +4,7 @@
 #
 Name     : gdal
 Version  : 3.0.0
-Release  : 11
+Release  : 12
 URL      : http://download.osgeo.org/gdal/3.0.0/gdal-3.0.0.tar.xz
 Source0  : http://download.osgeo.org/gdal/3.0.0/gdal-3.0.0.tar.xz
 Summary  : A translator library for raster geospatial data formats
@@ -19,21 +19,28 @@ BuildRequires : SFCGAL-dev
 BuildRequires : buildreq-cpan
 BuildRequires : buildreq-distutils3
 BuildRequires : curl-dev
+BuildRequires : expat-dev
 BuildRequires : geos-dev
 BuildRequires : hdf5-dev
 BuildRequires : json-c-dev
 BuildRequires : libjpeg-turbo-dev
 BuildRequires : libpng-dev
+BuildRequires : libwebp-dev
 BuildRequires : libxml2-dev
+BuildRequires : ocl-icd-dev
 BuildRequires : openssl-dev
 BuildRequires : pcre-dev
 BuildRequires : pkgconfig(bash-completion)
 BuildRequires : pkgconfig(libpq)
 BuildRequires : pkgconfig(poppler)
+BuildRequires : pkgconfig(zlib)
 BuildRequires : proj
 BuildRequires : proj-dev
+BuildRequires : qhull-dev
 BuildRequires : tiff-dev
 BuildRequires : unixODBC-dev
+BuildRequires : xerces-c-dev
+BuildRequires : zlib-dev
 BuildRequires : zstd-dev
 
 %description
@@ -106,25 +113,36 @@ license components for the gdal package.
 
 %prep
 %setup -q -n gdal-3.0.0
+pushd ..
+cp -a gdal-3.0.0 buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1558942795
+export SOURCE_DATE_EPOCH=1558944542
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 %configure --disable-static --datadir=/usr/share/gdal --datadir=/usr/share/gdal --with-libtiff=yes --with-png=yes --enable-lto
 make  %{?_smp_mflags}
 
+unset PKG_CONFIG_PATH
+pushd ../buildavx2/
+export CFLAGS="$CFLAGS -m64 -march=haswell"
+export CXXFLAGS="$CXXFLAGS -m64 -march=haswell"
+export LDFLAGS="$LDFLAGS -m64 -march=haswell"
+%configure --disable-static --datadir=/usr/share/gdal --datadir=/usr/share/gdal --with-libtiff=yes --with-png=yes --enable-lto
+make  %{?_smp_mflags}
+popd
 %install
-export SOURCE_DATE_EPOCH=1558942795
+export SOURCE_DATE_EPOCH=1558944542
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gdal
 cp LICENSE.TXT %{buildroot}/usr/share/package-licenses/gdal/LICENSE.TXT
@@ -137,6 +155,9 @@ cp ogr/ogrsf_frmts/geojson/libjson/COPYING %{buildroot}/usr/share/package-licens
 cp ogr/ogrsf_frmts/shape/COPYING %{buildroot}/usr/share/package-licenses/gdal/ogr_ogrsf_frmts_shape_COPYING
 cp port/LICENCE_minizip %{buildroot}/usr/share/package-licenses/gdal/port_LICENCE_minizip
 cp third_party/LercLib/LICENSE %{buildroot}/usr/share/package-licenses/gdal/third_party_LercLib_LICENSE
+pushd ../buildavx2/
+%make_install_avx2
+popd
 %make_install
 ## install_append content
 install -D %{buildroot}/usr/etc/bash_completion.d/gdal-bash-completion.sh %{buildroot}/usr/share/bash-completion/completions/gdal-bash-completion.sh
@@ -166,6 +187,30 @@ install -D %{buildroot}/usr/etc/bash_completion.d/gdal-bash-completion.sh %{buil
 /usr/bin/gdalwarp
 /usr/bin/gnmanalyse
 /usr/bin/gnmmanage
+/usr/bin/haswell/gdal_contour
+/usr/bin/haswell/gdal_grid
+/usr/bin/haswell/gdal_rasterize
+/usr/bin/haswell/gdal_translate
+/usr/bin/haswell/gdaladdo
+/usr/bin/haswell/gdalbuildvrt
+/usr/bin/haswell/gdaldem
+/usr/bin/haswell/gdalenhance
+/usr/bin/haswell/gdalinfo
+/usr/bin/haswell/gdallocationinfo
+/usr/bin/haswell/gdalmanage
+/usr/bin/haswell/gdalserver
+/usr/bin/haswell/gdalsrsinfo
+/usr/bin/haswell/gdaltindex
+/usr/bin/haswell/gdaltransform
+/usr/bin/haswell/gdalwarp
+/usr/bin/haswell/gnmanalyse
+/usr/bin/haswell/gnmmanage
+/usr/bin/haswell/nearblack
+/usr/bin/haswell/ogr2ogr
+/usr/bin/haswell/ogrinfo
+/usr/bin/haswell/ogrlineref
+/usr/bin/haswell/ogrtindex
+/usr/bin/haswell/testepsg
 /usr/bin/nearblack
 /usr/bin/ogr2ogr
 /usr/bin/ogrinfo
@@ -260,11 +305,14 @@ install -D %{buildroot}/usr/etc/bash_completion.d/gdal-bash-completion.sh %{buil
 %files dev
 %defattr(-,root,root,-)
 /usr/include/*.h
+/usr/lib64/haswell/libgdal.so
 /usr/lib64/libgdal.so
 /usr/lib64/pkgconfig/gdal.pc
 
 %files lib
 %defattr(-,root,root,-)
+/usr/lib64/haswell/libgdal.so.26
+/usr/lib64/haswell/libgdal.so.26.0.0
 /usr/lib64/libgdal.so.26
 /usr/lib64/libgdal.so.26.0.0
 

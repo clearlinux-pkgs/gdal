@@ -62,20 +62,101 @@ Configure miss: JP2Lura support... checking for MSG
 Configure miss: if Oracle support is enabled
 Configure miss: MySQL
 Configure miss: Ingres
-Configure miss: Xerces C++ Parser
-Configure miss: Expat XML Parser
 Configure miss: LIBKML
 Configure miss: Google libkml
 Configure miss: if Oracle support is enabled
 Configure miss: curl_global_init in -lcurl
 Configure miss: xmlParseDoc in -lxml2
-Configure miss: WebPDecodeRGB in -lwebp
 Configure miss: qhull/libqhull.h usability
 Configure miss: qhull/libqhull.h presence
 Configure miss: qhull/libqhull.h
-Configure miss: libqhull/libqhull.h usability
-Configure miss: libqhull/libqhull.h presence
-Configure miss: libqhull/libqhull.h
+Configure miss: OpenCL support
+Configure miss: FreeXL support... checking freexl.h usability
+Configure miss: freexl.h presence
+Configure miss: freexl.h
+Configure miss: freexl_open in -lfreexl
+Configure miss: freexl_open in -lfreexl
+Configure miss: freexl_open in -lfreexl
+Configure miss: freexl_open in -lfreexl
+Configure miss: freexl_open in -lfreexl
+Configure miss: whether to build PDF driver as a plugin
+Configure miss: whether we should include Java support
+Configure miss: tiledb_coords in -ltiledb
+Configure miss: whether we should include MDB support
+Configure miss: whether we should include Armadillo support
+Configure miss: cryptopp
+Configure miss: whether C compiler accepts -Werror -we10006
+Configure miss: whether C compiler accepts -diag-disable 188,1684,2259,2304,3280,11074,11076
+Configure miss: whether C compiler accepts -Wshorten-64-to-32
+Configure miss: whether C compiler accepts -Wcomma
+Configure miss: whether C compiler accepts -Wdocumentation -Wno-documentation-deprecated-sync
+Configure miss: whether C++ compiler accepts -Wunused-private-field
+Configure miss: whether C++ compiler accepts -Wmissing-prototypes
+Configure miss: dbmalloc.h usability
+Configure miss: dbmalloc.h presence
+Configure miss: dbmalloc.h
+Configure miss: direct.h usability
+Configure miss: direct.h presence
+Configure miss: int8
+Configure miss: int16
+Configure miss: int32
+Configure miss: to enable debug build
+Configure miss: whether SSE is available at compile time
+Configure miss: whether we should hide internal symbols
+Configure miss: local include/lib path
+Configure miss: G_gisinit_2 in -lgrass5
+Configure miss: ffopen in -lcfitsio
+Configure miss: Mopen in -lcsf
+Configure miss: csf.h usability
+Configure miss: csf.h presence
+Configure miss: csf.h
+Configure miss: gta_version in -lgta
+Configure miss: GTIFAttachPROJContext in -lgeotiff
+Configure miss: CharLS/interface.h usability
+Configure miss: CharLS/interface.h presence
+Configure miss: CharLS/interface.h
+Configure miss: CharLS/charls.h usability
+Configure miss: CharLS/charls.h presence
+Configure miss: CharLS/charls.h
+Configure miss: DGifOpenFileName in -lgif
+Configure miss: gif_lib.h usability
+Configure miss: gif_lib.h presence
+Configure miss: gif_lib.h
+Configure miss: OGDI
+Configure miss: ecs.h usability
+Configure miss: ecs.h presence
+Configure miss: ecs.h
+Configure miss: FMEObjects
+Configure miss: MONGOCXXV3
+Configure miss: SDreaddata in -lmfhdfalt
+Configure miss: SDreaddata in -lmfhdf
+Configure miss: SDreaddata in -lhdf4
+Configure miss: SDreaddata in -lmfhdf
+Configure miss: SDreaddata in -lmfhdf
+Configure miss: HDF5
+Configure miss: kea-config
+Configure miss: kea
+Configure miss: nc-config
+Configure miss: nc_open in -lnetcdf
+Configure miss: jpc_decode in -ljasper
+Configure miss: jp2_decode in -ljasper
+Configure miss: pgx_decode in -ljasper
+Configure miss: OPENJPEG
+Configure miss: NCScbmOpenFileView in -lNCSEcw
+Configure miss: NCScbmOpenFileView in -lecwj2
+Configure miss: Kakadu JPEG2000 support
+Configure miss: JP2Lura support... checking for MSG
+Configure miss: if Oracle support is enabled
+Configure miss: MySQL
+Configure miss: Ingres
+Configure miss: LIBKML
+Configure miss: Google libkml
+Configure miss: if Oracle support is enabled
+Configure miss: curl_global_init in -lcurl
+Configure miss: xmlParseDoc in -lxml2
+Configure miss: qhull/libqhull.h usability
+Configure miss: qhull/libqhull.h presence
+Configure miss: qhull/libqhull.h
 Configure miss: OpenCL support
 Configure miss: FreeXL support... checking freexl.h usability
 Configure miss: freexl.h presence
