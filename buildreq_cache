@@ -1,9 +1,14 @@
-2.2.3
+3.0.0
+SFCGAL-dev
 curl-dev
+geos-dev
+json-c-dev
 libjpeg-turbo-dev
 libxml2-dev
+openssl-dev
 pcre-dev
 pkgconfig(bash-completion)
 pkgconfig(zlib)
 unixODBC-dev
 zlib-dev
+zstd-dev
