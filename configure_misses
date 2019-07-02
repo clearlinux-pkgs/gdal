@@ -23,7 +23,6 @@ Configure miss: csf.h usability
 Configure miss: csf.h presence
 Configure miss: csf.h
 Configure miss: gta_version in -lgta
-Configure miss: GTIFAttachPROJContext in -lgeotiff
 Configure miss: CharLS/interface.h usability
 Configure miss: CharLS/interface.h presence
 Configure miss: CharLS/interface.h
@@ -109,7 +108,6 @@ Configure miss: csf.h usability
 Configure miss: csf.h presence
 Configure miss: csf.h
 Configure miss: gta_version in -lgta
-Configure miss: GTIFAttachPROJContext in -lgeotiff
 Configure miss: CharLS/interface.h usability
 Configure miss: CharLS/interface.h presence
 Configure miss: CharLS/interface.h

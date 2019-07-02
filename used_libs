@@ -6,6 +6,7 @@ libdl.so.2
 libexpat.so.1
 libgcc_s.so.1
 libgeos_c.so.1
+libgeotiff.so.5
 libhdf5.so.103
 libjpeg.so.62
 libjson-c.so.4

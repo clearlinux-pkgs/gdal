@@ -4,7 +4,7 @@
 #
 Name     : gdal
 Version  : 3.0.0
-Release  : 13
+Release  : 14
 URL      : http://download.osgeo.org/gdal/3.0.0/gdal-3.0.0.tar.xz
 Source0  : http://download.osgeo.org/gdal/3.0.0/gdal-3.0.0.tar.xz
 Summary  : Geospatial Data Abstraction Library
@@ -23,6 +23,7 @@ BuildRequires : expat-dev
 BuildRequires : geos-dev
 BuildRequires : hdf5-dev
 BuildRequires : json-c-dev
+BuildRequires : libgeotiff-dev
 BuildRequires : libjpeg-turbo-dev
 BuildRequires : libpng-dev
 BuildRequires : libwebp-dev
@@ -118,7 +119,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1562027459
+export SOURCE_DATE_EPOCH=1562030176
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -153,7 +154,7 @@ export LDFLAGS="$LDFLAGS -m64 -march=haswell"
 make  %{?_smp_mflags}
 popd
 %install
-export SOURCE_DATE_EPOCH=1562027459
+export SOURCE_DATE_EPOCH=1562030176
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gdal
 cp LICENSE.TXT %{buildroot}/usr/share/package-licenses/gdal/LICENSE.TXT
