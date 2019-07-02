@@ -4,10 +4,10 @@
 #
 Name     : gdal
 Version  : 3.0.0
-Release  : 12
+Release  : 13
 URL      : http://download.osgeo.org/gdal/3.0.0/gdal-3.0.0.tar.xz
 Source0  : http://download.osgeo.org/gdal/3.0.0/gdal-3.0.0.tar.xz
-Summary  : A translator library for raster geospatial data formats
+Summary  : Geospatial Data Abstraction Library
 Group    : Development/Tools
 License  : Apache-2.0 BSD-3-Clause LGPL-2.0 Libpng MIT Public-Domain Qhull
 Requires: gdal-bin = %{version}-%{release}
@@ -33,6 +33,8 @@ BuildRequires : pcre-dev
 BuildRequires : pkgconfig(bash-completion)
 BuildRequires : pkgconfig(libpq)
 BuildRequires : pkgconfig(poppler)
+BuildRequires : pkgconfig(spatialite)
+BuildRequires : pkgconfig(sqlite3)
 BuildRequires : pkgconfig(zlib)
 BuildRequires : proj
 BuildRequires : proj-dev
@@ -44,13 +46,8 @@ BuildRequires : zlib-dev
 BuildRequires : zstd-dev
 
 %description
-$Id$
-zlib 1.2.3 is a general purpose data compression library.
-All the code is thread safe. The data format used by the zlib library
-is described by RFCs (Request for Comments) 1950 to 1952 in the files
-ftp://ds.internic.net/rfc/rfc1950.txt (zlib format), rfc1951.txt (deflate
-format) and rfc1952.txt (gzip format). These documents are also available in
-other formats from ftp://ftp.uu.net/graphics/png/documents/zlib/zdoc-index.html
+This directory contains sample scripts intended to give an idea how GDAL's
+Python interface may be used in your applications.
 
 %package bin
 Summary: bin components for the gdal package.
@@ -87,7 +84,6 @@ Requires: gdal-bin = %{version}-%{release}
 Requires: gdal-data = %{version}-%{release}
 Provides: gdal-devel = %{version}-%{release}
 Requires: gdal = %{version}-%{release}
-Requires: gdal = %{version}-%{release}
 
 %description dev
 dev components for the gdal package.
@@ -122,7 +118,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1558944542
+export SOURCE_DATE_EPOCH=1562027459
+export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -130,7 +127,14 @@ export CFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-m
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-%configure --disable-static --datadir=/usr/share/gdal --datadir=/usr/share/gdal --with-libtiff=yes --with-png=yes --enable-lto
+%configure --disable-static --datadir=/usr/share/gdal \
+--datadir=/usr/share/gdal \
+--with-libtiff=yes \
+--with-png=yes \
+--with-spatialite=yes \
+--with-sqlite3=yes \
+--with-poppler=yes \
+--enable-lto
 make  %{?_smp_mflags}
 
 unset PKG_CONFIG_PATH
@@ -138,11 +142,18 @@ pushd ../buildavx2/
 export CFLAGS="$CFLAGS -m64 -march=haswell"
 export CXXFLAGS="$CXXFLAGS -m64 -march=haswell"
 export LDFLAGS="$LDFLAGS -m64 -march=haswell"
-%configure --disable-static --datadir=/usr/share/gdal --datadir=/usr/share/gdal --with-libtiff=yes --with-png=yes --enable-lto
+%configure --disable-static --datadir=/usr/share/gdal \
+--datadir=/usr/share/gdal \
+--with-libtiff=yes \
+--with-png=yes \
+--with-spatialite=yes \
+--with-sqlite3=yes \
+--with-poppler=yes \
+--enable-lto
 make  %{?_smp_mflags}
 popd
 %install
-export SOURCE_DATE_EPOCH=1558944542
+export SOURCE_DATE_EPOCH=1562027459
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gdal
 cp LICENSE.TXT %{buildroot}/usr/share/package-licenses/gdal/LICENSE.TXT

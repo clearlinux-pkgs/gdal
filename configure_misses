@@ -4,7 +4,6 @@ Configure miss: whether C compiler accepts -Wshorten-64-to-32
 Configure miss: whether C compiler accepts -Wcomma
 Configure miss: whether C compiler accepts -Wdocumentation -Wno-documentation-deprecated-sync
 Configure miss: whether C++ compiler accepts -Wunused-private-field
-Configure miss: whether C++ compiler accepts -Wmissing-prototypes
 Configure miss: dbmalloc.h usability
 Configure miss: dbmalloc.h presence
 Configure miss: dbmalloc.h
@@ -91,7 +90,6 @@ Configure miss: whether C compiler accepts -Wshorten-64-to-32
 Configure miss: whether C compiler accepts -Wcomma
 Configure miss: whether C compiler accepts -Wdocumentation -Wno-documentation-deprecated-sync
 Configure miss: whether C++ compiler accepts -Wunused-private-field
-Configure miss: whether C++ compiler accepts -Wmissing-prototypes
 Configure miss: dbmalloc.h usability
 Configure miss: dbmalloc.h presence
 Configure miss: dbmalloc.h

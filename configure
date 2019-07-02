@@ -1,1 +1,8 @@
---datadir=/usr/share/gdal --datadir=/usr/share/gdal --with-libtiff=yes --with-png=yes --enable-lto
+--datadir=/usr/share/gdal
+--datadir=/usr/share/gdal
+--with-libtiff=yes
+--with-png=yes
+--with-spatialite=yes
+--with-sqlite3=yes
+--with-poppler=yes
+--enable-lto
