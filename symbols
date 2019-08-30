@@ -1916,6 +1916,7 @@ libgdal.so.26:OSRGetInvFlattening
 libgdal.so.26:OSRGetLinearUnits
 libgdal.so.26:OSRGetName
 libgdal.so.26:OSRGetNormProjParm
+libgdal.so.26:OSRGetPROJVersion
 libgdal.so.26:OSRGetPrimeMeridian
 libgdal.so.26:OSRGetProjParm
 libgdal.so.26:OSRGetSemiMajor
@@ -2706,7 +2707,7 @@ libgdal.so.26:_Z22OGRPolylineCenterPointP13OGRLineStringP8OGRPoint
 libgdal.so.26:_Z22OGRReadWKBGeometryTypePKh13OGRwkbVariantP18OGRwkbGeometryType
 libgdal.so.26:_Z22RasterliteOpenSQLiteDBPKc10GDALAccess
 libgdal.so.26:_Z23ACGetKnownDimStyleCodesv
-libgdal.so.26:_Z23CPLHTTPGetNewRetryDelayidPKc
+libgdal.so.26:_Z23CPLHTTPGetNewRetryDelayidPKcS0_
 libgdal.so.26:_Z23CPLRecodeFromWCharIconvPKwPKcS2_
 libgdal.so.26:_Z23GDALGetResampleFunctionPKcPi
 libgdal.so.26:_Z23GDALValidateOpenOptionsPvPKPKc
@@ -4304,6 +4305,7 @@ libgdal.so.26:_ZN11ENVIDataset10FlushCacheEv
 libgdal.so.26:_ZN11ENVIDataset10ReadHeaderEP8_IO_FILE
 libgdal.so.26:_ZN11ENVIDataset11GetEnviTypeE12GDALDataType
 libgdal.so.26:_ZN11ENVIDataset11GetFileListEv
+libgdal.so.26:_ZN11ENVIDataset11GetGCPCountEv
 libgdal.so.26:_ZN11ENVIDataset11SetMetadataEPPcPKc
 libgdal.so.26:_ZN11ENVIDataset11byteSwapIntEi
 libgdal.so.26:_ZN11ENVIDataset12SetENVIDatumEP19OGRSpatialReferencePKc
@@ -4318,6 +4320,7 @@ libgdal.so.26:_ZN11ENVIDataset14byteSwapDoubleEd
 libgdal.so.26:_ZN11ENVIDataset15GetGeoTransformEPd
 libgdal.so.26:_ZN11ENVIDataset15SetGeoTransformEPd
 libgdal.so.26:_ZN11ENVIDataset15SetMetadataItemEPKcS1_S1_
+libgdal.so.26:_ZN11ENVIDataset16ProcessGeoPointsEPKc
 libgdal.so.26:_ZN11ENVIDataset16ProcessStatsFileEv
 libgdal.so.26:_ZN11ENVIDataset17_GetProjectionRefEv
 libgdal.so.26:_ZN11ENVIDataset18WritePseudoGcpInfoEv
@@ -4326,6 +4329,7 @@ libgdal.so.26:_ZN11ENVIDataset28ParseRpcCoeffsMetaDataStringEPKcPPcRi
 libgdal.so.26:_ZN11ENVIDataset4OpenEP12GDALOpenInfo
 libgdal.so.26:_ZN11ENVIDataset4OpenEP12GDALOpenInfob
 libgdal.so.26:_ZN11ENVIDataset6CreateEPKciii12GDALDataTypePPc
+libgdal.so.26:_ZN11ENVIDataset7GetGCPsEv
 libgdal.so.26:_ZN11ENVIDataset7SetGCPsEiPK8GDAL_GCPPK19OGRSpatialReference
 libgdal.so.26:_ZN11ENVIDataset9SplitListEPKc
 libgdal.so.26:_ZN11ENVIDatasetC1Ev
@@ -5875,6 +5879,7 @@ libgdal.so.26:_ZN12GTiffDataset22InitCompressionThreadsEPPc
 libgdal.so.26:_ZN12GTiffDataset22WaitCompletionForBlockEi
 libgdal.so.26:_ZN12GTiffDataset23WriteEncodedTileOrStripEjPvi
 libgdal.so.26:_ZN12GTiffDataset25InitCreationOrOpenOptionsEPPc
+libgdal.so.26:_ZN12GTiffDataset25RestoreVolatileParametersEP4tiff
 libgdal.so.26:_ZN12GTiffDataset26HasOptimizedReadMultiRangeEv
 libgdal.so.26:_ZN12GTiffDataset26RegisterNewOverviewDatasetEmi
 libgdal.so.26:_ZN12GTiffDataset27CreateInternalMaskOverviewsEii
@@ -6941,8 +6946,8 @@ libgdal.so.26:_ZN13OGRShapeLayer36GetFeatureCountWithSpatialFilterOnlyEv
 libgdal.so.26:_ZN13OGRShapeLayer6RepackEv
 libgdal.so.26:_ZN13OGRShapeLayer9GetExtentEP11OGREnvelopei
 libgdal.so.26:_ZN13OGRShapeLayer9ResizeDBFEv
-libgdal.so.26:_ZN13OGRShapeLayerC1EP18OGRShapeDataSourcePKcP7SHPInfoP7DBFInfoP19OGRSpatialReferencebb18OGRwkbGeometryTypePPc
-libgdal.so.26:_ZN13OGRShapeLayerC2EP18OGRShapeDataSourcePKcP7SHPInfoP7DBFInfoP19OGRSpatialReferencebb18OGRwkbGeometryTypePPc
+libgdal.so.26:_ZN13OGRShapeLayerC1EP18OGRShapeDataSourcePKcP7SHPInfoP7DBFInfoPK19OGRSpatialReferencebb18OGRwkbGeometryTypePPc
+libgdal.so.26:_ZN13OGRShapeLayerC2EP18OGRShapeDataSourcePKcP7SHPInfoP7DBFInfoPK19OGRSpatialReferencebb18OGRwkbGeometryTypePPc
 libgdal.so.26:_ZN13OGRShapeLayerD0Ev
 libgdal.so.26:_ZN13OGRShapeLayerD1Ev
 libgdal.so.26:_ZN13OGRShapeLayerD2Ev
@@ -14625,6 +14630,8 @@ libgdal.so.26:_ZN33GDALVectorTranslateWrappedDatasetD0Ev
 libgdal.so.26:_ZN33GDALVectorTranslateWrappedDatasetD1Ev
 libgdal.so.26:_ZN33GDALVectorTranslateWrappedDatasetD2Ev
 libgdal.so.26:_ZN34OGRCoordinateTransformationOptions17SetAreaOfInterestEdddd
+libgdal.so.26:_ZN34OGRCoordinateTransformationOptions19SetSourceCenterLongEd
+libgdal.so.26:_ZN34OGRCoordinateTransformationOptions19SetTargetCenterLongEd
 libgdal.so.26:_ZN34OGRCoordinateTransformationOptions22SetCoordinateOperationEPKcb
 libgdal.so.26:_ZN34OGRCoordinateTransformationOptionsC1Ev
 libgdal.so.26:_ZN34OGRCoordinateTransformationOptionsC2Ev
