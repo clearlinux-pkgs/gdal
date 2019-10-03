@@ -6,3 +6,6 @@
 --with-sqlite3=yes
 --with-poppler=yes
 --enable-lto
+--with-gif=external
+--with-libjson-c=external
+--with-libtool=no

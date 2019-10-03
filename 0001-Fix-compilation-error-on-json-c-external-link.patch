@@ -1,0 +1,27 @@
+From 443d0b2124d167307174db091e7cad706b6b8cf7 Mon Sep 17 00:00:00 2001
+From: Choong Yin Thong <yin.thong.choong@intel.com>
+Date: Thu, 3 Oct 2019 06:29:27 +0000
+Subject: [PATCH] Fix compilation error on json-c external link
+
+Signed-off-by: Choong Yin Thong <yin.thong.choong@intel.com>
+---
+ ogr/ogrsf_frmts/geojson/GNUmakefile | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/ogr/ogrsf_frmts/geojson/GNUmakefile b/ogr/ogrsf_frmts/geojson/GNUmakefile
+index 9e0cd5d..11dd5b7 100644
+--- a/ogr/ogrsf_frmts/geojson/GNUmakefile
++++ b/ogr/ogrsf_frmts/geojson/GNUmakefile
+@@ -19,7 +19,8 @@ OBJ = \
+ 	ogresrijsonreader.o \
+ 	ogrtopojsonreader.o
+ 
+-CPPFLAGS	:= $(JSON_INCLUDE) -I. -I.. -I../..  $(CPPFLAGS)
++JSON_INTERNAL_INCLUDE = -Ilibjson
++CPPFLAGS	:= $(JSON_INCLUDE) $(JSON_INTERNAL_INCLUDE) -I. -I.. -I../..  $(CPPFLAGS)
+ 
+ default:        $(foreach d,$(SUBDIRS-yes),$(d)-target) $(O_OBJ:.o=.$(OBJ_EXT))
+ 
+-- 
+2.21.0
+

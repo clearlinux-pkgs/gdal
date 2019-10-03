@@ -4,7 +4,7 @@
 #
 Name     : gdal
 Version  : 3.0.1
-Release  : 15
+Release  : 17
 URL      : https://download.osgeo.org/gdal/3.0.1/gdal-3.0.1.tar.xz
 Source0  : https://download.osgeo.org/gdal/3.0.1/gdal-3.0.1.tar.xz
 Summary  : Geospatial Data Abstraction Library
@@ -23,6 +23,7 @@ BuildRequires : buildreq-mvn
 BuildRequires : curl-dev
 BuildRequires : expat-dev
 BuildRequires : geos-dev
+BuildRequires : giflib-dev
 BuildRequires : hdf5-dev
 BuildRequires : json-c-dev
 BuildRequires : libgeotiff-dev
@@ -47,6 +48,7 @@ BuildRequires : unixODBC-dev
 BuildRequires : xerces-c-dev
 BuildRequires : zlib-dev
 BuildRequires : zstd-dev
+Patch1: 0001-Fix-compilation-error-on-json-c-external-link.patch
 
 %description
 Notes
@@ -106,6 +108,7 @@ license components for the gdal package.
 
 %prep
 %setup -q -n gdal-3.0.1
+%patch1 -p1
 pushd ..
 cp -a gdal-3.0.1 buildavx2
 popd
@@ -115,7 +118,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568761832
+export SOURCE_DATE_EPOCH=1570088514
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -131,7 +134,10 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -f
 --with-spatialite=yes \
 --with-sqlite3=yes \
 --with-poppler=yes \
---enable-lto
+--enable-lto \
+--with-gif=external \
+--with-libjson-c=external \
+--with-libtool=no
 make  %{?_smp_mflags}
 
 unset PKG_CONFIG_PATH
@@ -146,11 +152,14 @@ export LDFLAGS="$LDFLAGS -m64 -march=haswell"
 --with-spatialite=yes \
 --with-sqlite3=yes \
 --with-poppler=yes \
---enable-lto
+--enable-lto \
+--with-gif=external \
+--with-libjson-c=external \
+--with-libtool=no
 make  %{?_smp_mflags}
 popd
 %install
-export SOURCE_DATE_EPOCH=1568761832
+export SOURCE_DATE_EPOCH=1570088514
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gdal
 cp LICENSE.TXT %{buildroot}/usr/share/package-licenses/gdal/LICENSE.TXT
@@ -163,6 +172,7 @@ cp ogr/ogrsf_frmts/geojson/libjson/COPYING %{buildroot}/usr/share/package-licens
 cp ogr/ogrsf_frmts/shape/COPYING %{buildroot}/usr/share/package-licenses/gdal/ogr_ogrsf_frmts_shape_COPYING
 cp port/LICENCE_minizip %{buildroot}/usr/share/package-licenses/gdal/port_LICENCE_minizip
 cp third_party/LercLib/LICENSE %{buildroot}/usr/share/package-licenses/gdal/third_party_LercLib_LICENSE
+cp third_party/LercLib/NOTICE %{buildroot}/usr/share/package-licenses/gdal/third_party_LercLib_NOTICE
 pushd ../buildavx2/
 %make_install_avx2
 popd
@@ -371,16 +381,16 @@ rm -f %{buildroot}/usr/etc/bash_completion.d/gdal-bash-completion.sh
 /usr/include/ogrsf_frmts.h
 /usr/include/rawdataset.h
 /usr/include/vrtdataset.h
-/usr/lib64/haswell/libgdal.so
 /usr/lib64/libgdal.so
 /usr/lib64/pkgconfig/gdal.pc
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/haswell/libgdal.so.26
-/usr/lib64/haswell/libgdal.so.26.0.1
-/usr/lib64/libgdal.so.26
-/usr/lib64/libgdal.so.26.0.1
+/usr/lib64/libgdal.so.3
+/usr/lib64/libgdal.so.3.0.1
+/usr/lib64/libgdal.so.3.0.1.avx2
+/usr/lib64/libgdal.so.3.avx2
+/usr/lib64/libgdal.so.avx2
 
 %files license
 %defattr(0644,root,root,0755)
@@ -394,3 +404,4 @@ rm -f %{buildroot}/usr/etc/bash_completion.d/gdal-bash-completion.sh
 /usr/share/package-licenses/gdal/ogr_ogrsf_frmts_shape_COPYING
 /usr/share/package-licenses/gdal/port_LICENCE_minizip
 /usr/share/package-licenses/gdal/third_party_LercLib_LICENSE
+/usr/share/package-licenses/gdal/third_party_LercLib_NOTICE

@@ -29,10 +29,6 @@ Configure miss: CharLS/interface.h
 Configure miss: CharLS/charls.h usability
 Configure miss: CharLS/charls.h presence
 Configure miss: CharLS/charls.h
-Configure miss: DGifOpenFileName in -lgif
-Configure miss: gif_lib.h usability
-Configure miss: gif_lib.h presence
-Configure miss: gif_lib.h
 Configure miss: OGDI
 Configure miss: ecs.h usability
 Configure miss: ecs.h presence
@@ -114,10 +110,6 @@ Configure miss: CharLS/interface.h
 Configure miss: CharLS/charls.h usability
 Configure miss: CharLS/charls.h presence
 Configure miss: CharLS/charls.h
-Configure miss: DGifOpenFileName in -lgif
-Configure miss: gif_lib.h usability
-Configure miss: gif_lib.h presence
-Configure miss: gif_lib.h
 Configure miss: OGDI
 Configure miss: ecs.h usability
 Configure miss: ecs.h presence
