@@ -1,11 +1,10 @@
 --datadir=/usr/share/gdal
---datadir=/usr/share/gdal
 --with-libtiff=yes
 --with-png=yes
 --with-spatialite=yes
 --with-sqlite3=yes
 --with-poppler=yes
 --enable-lto
---with-gif=external
---with-libjson-c=external
---with-libtool=no
+--with-gif=/usr
+--with-libjson-c=/usr
+--with-libtool=yes

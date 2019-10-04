@@ -4,7 +4,7 @@
 #
 Name     : gdal
 Version  : 3.0.1
-Release  : 17
+Release  : 18
 URL      : https://download.osgeo.org/gdal/3.0.1/gdal-3.0.1.tar.xz
 Source0  : https://download.osgeo.org/gdal/3.0.1/gdal-3.0.1.tar.xz
 Summary  : Geospatial Data Abstraction Library
@@ -118,7 +118,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570088514
+export SOURCE_DATE_EPOCH=1570231186
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -128,16 +128,15 @@ export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 %configure --disable-static --datadir=/usr/share/gdal \
---datadir=/usr/share/gdal \
 --with-libtiff=yes \
 --with-png=yes \
 --with-spatialite=yes \
 --with-sqlite3=yes \
 --with-poppler=yes \
 --enable-lto \
---with-gif=external \
---with-libjson-c=external \
---with-libtool=no
+--with-gif=/usr \
+--with-libjson-c=/usr \
+--with-libtool=yes
 make  %{?_smp_mflags}
 
 unset PKG_CONFIG_PATH
@@ -146,20 +145,19 @@ export CFLAGS="$CFLAGS -m64 -march=haswell"
 export CXXFLAGS="$CXXFLAGS -m64 -march=haswell"
 export LDFLAGS="$LDFLAGS -m64 -march=haswell"
 %configure --disable-static --datadir=/usr/share/gdal \
---datadir=/usr/share/gdal \
 --with-libtiff=yes \
 --with-png=yes \
 --with-spatialite=yes \
 --with-sqlite3=yes \
 --with-poppler=yes \
 --enable-lto \
---with-gif=external \
---with-libjson-c=external \
---with-libtool=no
+--with-gif=/usr \
+--with-libjson-c=/usr \
+--with-libtool=yes
 make  %{?_smp_mflags}
 popd
 %install
-export SOURCE_DATE_EPOCH=1570088514
+export SOURCE_DATE_EPOCH=1570231186
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gdal
 cp LICENSE.TXT %{buildroot}/usr/share/package-licenses/gdal/LICENSE.TXT
@@ -381,16 +379,16 @@ rm -f %{buildroot}/usr/etc/bash_completion.d/gdal-bash-completion.sh
 /usr/include/ogrsf_frmts.h
 /usr/include/rawdataset.h
 /usr/include/vrtdataset.h
+/usr/lib64/haswell/libgdal.so
 /usr/lib64/libgdal.so
 /usr/lib64/pkgconfig/gdal.pc
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libgdal.so.3
-/usr/lib64/libgdal.so.3.0.1
-/usr/lib64/libgdal.so.3.0.1.avx2
-/usr/lib64/libgdal.so.3.avx2
-/usr/lib64/libgdal.so.avx2
+/usr/lib64/haswell/libgdal.so.26
+/usr/lib64/haswell/libgdal.so.26.0.1
+/usr/lib64/libgdal.so.26
+/usr/lib64/libgdal.so.26.0.1
 
 %files license
 %defattr(0644,root,root,0755)
