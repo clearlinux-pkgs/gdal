@@ -4,7 +4,7 @@
 #
 Name     : gdal
 Version  : 3.0.1
-Release  : 18
+Release  : 19
 URL      : https://download.osgeo.org/gdal/3.0.1/gdal-3.0.1.tar.xz
 Source0  : https://download.osgeo.org/gdal/3.0.1/gdal-3.0.1.tar.xz
 Summary  : Geospatial Data Abstraction Library
@@ -49,6 +49,7 @@ BuildRequires : xerces-c-dev
 BuildRequires : zlib-dev
 BuildRequires : zstd-dev
 Patch1: 0001-Fix-compilation-error-on-json-c-external-link.patch
+Patch2: CVE-2019-17545.patch
 
 %description
 Notes
@@ -109,6 +110,7 @@ license components for the gdal package.
 %prep
 %setup -q -n gdal-3.0.1
 %patch1 -p1
+%patch2 -p1
 pushd ..
 cp -a gdal-3.0.1 buildavx2
 popd
@@ -118,15 +120,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570231186
+export SOURCE_DATE_EPOCH=1571104363
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export CFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
 %configure --disable-static --datadir=/usr/share/gdal \
 --with-libtiff=yes \
 --with-png=yes \
@@ -157,20 +159,20 @@ export LDFLAGS="$LDFLAGS -m64 -march=haswell"
 make  %{?_smp_mflags}
 popd
 %install
-export SOURCE_DATE_EPOCH=1570231186
+export SOURCE_DATE_EPOCH=1571104363
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gdal
-cp LICENSE.TXT %{buildroot}/usr/share/package-licenses/gdal/LICENSE.TXT
-cp alg/internal_libqhull/COPYING.txt %{buildroot}/usr/share/package-licenses/gdal/alg_internal_libqhull_COPYING.txt
-cp frmts/gif/giflib/COPYING %{buildroot}/usr/share/package-licenses/gdal/frmts_gif_giflib_COPYING
-cp frmts/mrf/libLERC/LICENSE.TXT %{buildroot}/usr/share/package-licenses/gdal/frmts_mrf_libLERC_LICENSE.TXT
-cp frmts/pcraster/libcsf/COPYING %{buildroot}/usr/share/package-licenses/gdal/frmts_pcraster_libcsf_COPYING
-cp frmts/png/libpng/LICENSE %{buildroot}/usr/share/package-licenses/gdal/frmts_png_libpng_LICENSE
-cp ogr/ogrsf_frmts/geojson/libjson/COPYING %{buildroot}/usr/share/package-licenses/gdal/ogr_ogrsf_frmts_geojson_libjson_COPYING
-cp ogr/ogrsf_frmts/shape/COPYING %{buildroot}/usr/share/package-licenses/gdal/ogr_ogrsf_frmts_shape_COPYING
-cp port/LICENCE_minizip %{buildroot}/usr/share/package-licenses/gdal/port_LICENCE_minizip
-cp third_party/LercLib/LICENSE %{buildroot}/usr/share/package-licenses/gdal/third_party_LercLib_LICENSE
-cp third_party/LercLib/NOTICE %{buildroot}/usr/share/package-licenses/gdal/third_party_LercLib_NOTICE
+cp %{_builddir}/gdal-3.0.1/LICENSE.TXT %{buildroot}/usr/share/package-licenses/gdal/3c5056c99522acf3d9e2c2a2f61fdeeffced4174
+cp %{_builddir}/gdal-3.0.1/alg/internal_libqhull/COPYING.txt %{buildroot}/usr/share/package-licenses/gdal/baf1d15dcf66b1e1dfee80eb405aa73105842017
+cp %{_builddir}/gdal-3.0.1/frmts/gif/giflib/COPYING %{buildroot}/usr/share/package-licenses/gdal/f9c9a2d3495a0766b4cf20d4b90cfe714dab3dc1
+cp %{_builddir}/gdal-3.0.1/frmts/mrf/libLERC/LICENSE.TXT %{buildroot}/usr/share/package-licenses/gdal/3035b519169390d1aaa3a43267deaae5cdff8a9b
+cp %{_builddir}/gdal-3.0.1/frmts/pcraster/libcsf/COPYING %{buildroot}/usr/share/package-licenses/gdal/1d982db70b88f943cc7d15013c28a126339d6cbc
+cp %{_builddir}/gdal-3.0.1/frmts/png/libpng/LICENSE %{buildroot}/usr/share/package-licenses/gdal/1f906240d40bc72f70c6765ed4df959defd3c153
+cp %{_builddir}/gdal-3.0.1/ogr/ogrsf_frmts/geojson/libjson/COPYING %{buildroot}/usr/share/package-licenses/gdal/0cd23537e3c32497c7b87157b36f9d2eb5fca64b
+cp %{_builddir}/gdal-3.0.1/ogr/ogrsf_frmts/shape/COPYING %{buildroot}/usr/share/package-licenses/gdal/df97bdf33b01f9ed42a799dd3ed7a1599dd0cb9d
+cp %{_builddir}/gdal-3.0.1/port/LICENCE_minizip %{buildroot}/usr/share/package-licenses/gdal/f7f1d88d0aea6c567a2c351b08b0fe80f2582054
+cp %{_builddir}/gdal-3.0.1/third_party/LercLib/LICENSE %{buildroot}/usr/share/package-licenses/gdal/3035b519169390d1aaa3a43267deaae5cdff8a9b
+cp %{_builddir}/gdal-3.0.1/third_party/LercLib/NOTICE %{buildroot}/usr/share/package-licenses/gdal/4e8e03579f57bab9de5401be3fb96344f0823ead
 pushd ../buildavx2/
 %make_install_avx2
 popd
@@ -392,14 +394,13 @@ rm -f %{buildroot}/usr/etc/bash_completion.d/gdal-bash-completion.sh
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/gdal/LICENSE.TXT
-/usr/share/package-licenses/gdal/alg_internal_libqhull_COPYING.txt
-/usr/share/package-licenses/gdal/frmts_gif_giflib_COPYING
-/usr/share/package-licenses/gdal/frmts_mrf_libLERC_LICENSE.TXT
-/usr/share/package-licenses/gdal/frmts_pcraster_libcsf_COPYING
-/usr/share/package-licenses/gdal/frmts_png_libpng_LICENSE
-/usr/share/package-licenses/gdal/ogr_ogrsf_frmts_geojson_libjson_COPYING
-/usr/share/package-licenses/gdal/ogr_ogrsf_frmts_shape_COPYING
-/usr/share/package-licenses/gdal/port_LICENCE_minizip
-/usr/share/package-licenses/gdal/third_party_LercLib_LICENSE
-/usr/share/package-licenses/gdal/third_party_LercLib_NOTICE
+/usr/share/package-licenses/gdal/0cd23537e3c32497c7b87157b36f9d2eb5fca64b
+/usr/share/package-licenses/gdal/1d982db70b88f943cc7d15013c28a126339d6cbc
+/usr/share/package-licenses/gdal/1f906240d40bc72f70c6765ed4df959defd3c153
+/usr/share/package-licenses/gdal/3035b519169390d1aaa3a43267deaae5cdff8a9b
+/usr/share/package-licenses/gdal/3c5056c99522acf3d9e2c2a2f61fdeeffced4174
+/usr/share/package-licenses/gdal/4e8e03579f57bab9de5401be3fb96344f0823ead
+/usr/share/package-licenses/gdal/baf1d15dcf66b1e1dfee80eb405aa73105842017
+/usr/share/package-licenses/gdal/df97bdf33b01f9ed42a799dd3ed7a1599dd0cb9d
+/usr/share/package-licenses/gdal/f7f1d88d0aea6c567a2c351b08b0fe80f2582054
+/usr/share/package-licenses/gdal/f9c9a2d3495a0766b4cf20d4b90cfe714dab3dc1
