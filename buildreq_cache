@@ -14,6 +14,7 @@ pkgconfig(bash-completion)
 pkgconfig(zlib)
 qhull-dev
 unixODBC-dev
+util-linux
 xerces-c-dev
 zlib-dev
 zstd-dev
