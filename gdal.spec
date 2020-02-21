@@ -4,7 +4,7 @@
 #
 Name     : gdal
 Version  : 3.0.1
-Release  : 21
+Release  : 22
 URL      : https://download.osgeo.org/gdal/3.0.1/gdal-3.0.1.tar.xz
 Source0  : https://download.osgeo.org/gdal/3.0.1/gdal-3.0.1.tar.xz
 Summary  : Geospatial Data Abstraction Library
@@ -16,10 +16,8 @@ Requires: gdal-lib = %{version}-%{release}
 Requires: gdal-license = %{version}-%{release}
 BuildRequires : SFCGAL-dev
 BuildRequires : apache-ant
-BuildRequires : apache-maven
 BuildRequires : buildreq-cpan
 BuildRequires : buildreq-distutils3
-BuildRequires : buildreq-mvn
 BuildRequires : curl-dev
 BuildRequires : expat-dev
 BuildRequires : geos-dev
@@ -111,6 +109,7 @@ license components for the gdal package.
 
 %prep
 %setup -q -n gdal-3.0.1
+cd %{_builddir}/gdal-3.0.1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
@@ -123,7 +122,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1572313862
+export SOURCE_DATE_EPOCH=1582312830
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -162,7 +161,7 @@ export LDFLAGS="$LDFLAGS -m64 -march=haswell"
 make  %{?_smp_mflags}
 popd
 %install
-export SOURCE_DATE_EPOCH=1572313862
+export SOURCE_DATE_EPOCH=1582312830
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gdal
 cp %{_builddir}/gdal-3.0.1/LICENSE.TXT %{buildroot}/usr/share/package-licenses/gdal/3c5056c99522acf3d9e2c2a2f61fdeeffced4174
@@ -182,6 +181,9 @@ popd
 %make_install
 ## Remove excluded files
 rm -f %{buildroot}/usr/etc/bash_completion.d/gdal-bash-completion.sh
+## install_append content
+#install -D %{buildroot}/usr/etc/bash_completion.d/gdal-bash-completion.sh %{buildroot}/usr/share/bash-completion/completions/gdal-bash-completion.sh
+## install_append end
 
 %files
 %defattr(-,root,root,-)
