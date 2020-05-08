@@ -29,6 +29,9 @@ Configure miss: CharLS/interface.h
 Configure miss: CharLS/charls.h usability
 Configure miss: CharLS/charls.h presence
 Configure miss: CharLS/charls.h
+Configure miss: charls/charls.h usability
+Configure miss: charls/charls.h presence
+Configure miss: charls/charls.h
 Configure miss: OGDI
 Configure miss: ecs.h usability
 Configure miss: ecs.h presence
@@ -60,7 +63,6 @@ Configure miss: LIBKML
 Configure miss: Google libkml
 Configure miss: if Oracle support is enabled
 Configure miss: curl_global_init in -lcurl
-Configure miss: xmlParseDoc in -lxml2
 Configure miss: qhull/libqhull.h usability
 Configure miss: qhull/libqhull.h presence
 Configure miss: qhull/libqhull.h
@@ -77,6 +79,7 @@ Configure miss: whether to build PDF driver as a plugin
 Configure miss: whether we should include Java support
 Configure miss: tiledb_coords in -ltiledb
 Configure miss: whether we should include MDB support
+Configure miss: rdb_library_name in -lrdb
 Configure miss: whether we should include Armadillo support
 Configure miss: cryptopp
 Configure miss: whether C compiler accepts -Werror -we10006
@@ -110,6 +113,9 @@ Configure miss: CharLS/interface.h
 Configure miss: CharLS/charls.h usability
 Configure miss: CharLS/charls.h presence
 Configure miss: CharLS/charls.h
+Configure miss: charls/charls.h usability
+Configure miss: charls/charls.h presence
+Configure miss: charls/charls.h
 Configure miss: OGDI
 Configure miss: ecs.h usability
 Configure miss: ecs.h presence
@@ -141,7 +147,6 @@ Configure miss: LIBKML
 Configure miss: Google libkml
 Configure miss: if Oracle support is enabled
 Configure miss: curl_global_init in -lcurl
-Configure miss: xmlParseDoc in -lxml2
 Configure miss: qhull/libqhull.h usability
 Configure miss: qhull/libqhull.h presence
 Configure miss: qhull/libqhull.h
@@ -158,5 +163,6 @@ Configure miss: whether to build PDF driver as a plugin
 Configure miss: whether we should include Java support
 Configure miss: tiledb_coords in -ltiledb
 Configure miss: whether we should include MDB support
+Configure miss: rdb_library_name in -lrdb
 Configure miss: whether we should include Armadillo support
 Configure miss: cryptopp

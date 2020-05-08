@@ -1,4 +1,7 @@
 ld-linux-x86-64.so.2
+libHalf.so.24
+libIex-2_3.so.24
+libIlmImf-2_3.so.24
 libSFCGAL.so.1
 libc.so.6
 libcrypto.so.1.1
@@ -27,4 +30,5 @@ libstdc++.so.6
 libtiff.so.5
 libwebp.so.7
 libxerces-c-3.2.so
+libxml2.so.2
 libz.so.1
