@@ -23,15 +23,15 @@ Configure miss: csf.h usability
 Configure miss: csf.h presence
 Configure miss: csf.h
 Configure miss: gta_version in -lgta
+Configure miss: charls/version.h usability
+Configure miss: charls/version.h presence
+Configure miss: charls/version.h
 Configure miss: CharLS/interface.h usability
 Configure miss: CharLS/interface.h presence
 Configure miss: CharLS/interface.h
 Configure miss: CharLS/charls.h usability
 Configure miss: CharLS/charls.h presence
 Configure miss: CharLS/charls.h
-Configure miss: charls/charls.h usability
-Configure miss: charls/charls.h presence
-Configure miss: charls/charls.h
 Configure miss: OGDI
 Configure miss: ecs.h usability
 Configure miss: ecs.h presence
@@ -107,15 +107,15 @@ Configure miss: csf.h usability
 Configure miss: csf.h presence
 Configure miss: csf.h
 Configure miss: gta_version in -lgta
+Configure miss: charls/version.h usability
+Configure miss: charls/version.h presence
+Configure miss: charls/version.h
 Configure miss: CharLS/interface.h usability
 Configure miss: CharLS/interface.h presence
 Configure miss: CharLS/interface.h
 Configure miss: CharLS/charls.h usability
 Configure miss: CharLS/charls.h presence
 Configure miss: CharLS/charls.h
-Configure miss: charls/charls.h usability
-Configure miss: charls/charls.h presence
-Configure miss: charls/charls.h
 Configure miss: OGDI
 Configure miss: ecs.h usability
 Configure miss: ecs.h presence
