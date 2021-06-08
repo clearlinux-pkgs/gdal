@@ -1,0 +1,3 @@
+sed -i 's/-flto"$/-flto=auto"/' ./configure.ac
+# Also patch configure it case we no longer patch the configure.ac...
+sed -i 's/-flto"$/-flto=auto"/' ./configure
