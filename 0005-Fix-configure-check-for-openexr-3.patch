@@ -1,0 +1,23 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Patrick McCarty <patrick.mccarty@intel.com>
+Date: Tue, 8 Jun 2021 15:53:12 -0700
+Subject: [PATCH] Fix configure check for openexr 3
+
+Signed-off-by: Patrick McCarty <patrick.mccarty@intel.com>
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 126ddb5..11b7234 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -5951,7 +5951,7 @@ else
+     # Test that the package found is for the right architecture
+     saved_LIBS="$LIBS"
+     LIBS="$EXR_LIBS"
+-    AC_CHECK_LIB(IlmImf,ImfTiledInputReadTile, [HAVE_EXR=yes], [HAVE_EXR=no])
++    AC_CHECK_LIB(OpenEXR,ImfTiledInputReadTile, [HAVE_EXR=yes], [HAVE_EXR=no])
+     LIBS="$saved_LIBS"
+ 
+     if test "$HAVE_EXR" = "yes"; then

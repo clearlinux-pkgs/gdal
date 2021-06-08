@@ -1,10 +1,10 @@
 ld-linux-x86-64.so.2
-libHalf.so.24
-libIex-2_3.so.24
-libIlmImf-2_3.so.24
+libImath-3_0.so.28
+libOpenEXR-3_0.so.28
 libSFCGAL.so.1
 libc.so.6
 libcrypto.so.1.1
+libcurl.so.4
 libdl.so.2
 libexpat.so.1
 libgcc_s.so.1
@@ -19,7 +19,7 @@ libodbc.so.2
 libodbcinst.so.2
 libpcre.so.1
 libpng16.so.16
-libpoppler.so.92
+libpoppler.so.111
 libpq.so.5
 libproj.so.19
 libpthread.so.0

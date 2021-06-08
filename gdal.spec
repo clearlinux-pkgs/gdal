@@ -4,7 +4,7 @@
 #
 Name     : gdal
 Version  : 3.1.2
-Release  : 32
+Release  : 33
 URL      : https://download.osgeo.org/gdal/3.1.2/gdal-3.1.2.tar.xz
 Source0  : https://download.osgeo.org/gdal/3.1.2/gdal-3.1.2.tar.xz
 Summary  : Geospatial Data Abstraction Library
@@ -16,21 +16,28 @@ Requires: gdal-lib = %{version}-%{release}
 Requires: gdal-license = %{version}-%{release}
 BuildRequires : SFCGAL-dev
 BuildRequires : apache-ant
+BuildRequires : automake
+BuildRequires : automake-dev
 BuildRequires : buildreq-cpan
 BuildRequires : buildreq-distutils3
 BuildRequires : curl-dev
 BuildRequires : expat-dev
 BuildRequires : geos-dev
+BuildRequires : gettext-bin
 BuildRequires : giflib-dev
 BuildRequires : hdf5-dev
 BuildRequires : json-c-dev
 BuildRequires : libgeotiff-dev
 BuildRequires : libjpeg-turbo-dev
 BuildRequires : libpng-dev
+BuildRequires : libtool
+BuildRequires : libtool-dev
 BuildRequires : libwebp-dev
+BuildRequires : m4
 BuildRequires : ocl-icd-dev
 BuildRequires : openssl-dev
 BuildRequires : pcre-dev
+BuildRequires : pkg-config-dev
 BuildRequires : pkgconfig(OpenEXR)
 BuildRequires : pkgconfig(libpq)
 BuildRequires : pkgconfig(libxml-2.0)
@@ -45,6 +52,11 @@ BuildRequires : unixODBC-dev
 BuildRequires : xerces-c-dev
 BuildRequires : zstd-dev
 Patch1: 0001-Fix-compilation-error-on-json-c-external-link.patch
+Patch2: 0002-Add-some-missing-limits-includes.patch
+Patch3: 0003-EXR-fix-build-against-OpenEXR-3.0.1-fixes-3770.patch
+Patch4: 0004-Workaround-for-inability-to-run-autoreconf.patch
+Patch5: 0005-Fix-configure-check-for-openexr-3.patch
+Patch6: 0006-Unix-build-fix-detection-of-minor-version-number-of-.patch
 
 %description
 Use this script to create a valid "ogrsosidatatypes.h" include file based on the element definitions in the standard. You can extract the XML files by exporting the tables of the same name from the official Access-Database at
@@ -102,16 +114,27 @@ license components for the gdal package.
 %setup -q -n gdal-3.1.2
 cd %{_builddir}/gdal-3.1.2
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
 pushd ..
 cp -a gdal-3.1.2 buildavx2
 popd
 
 %build
+## build_prepend content
+sed -i 's/-flto"$/-flto=auto"/' ./configure.ac
+# Also patch the generated configure script, in case we stop patching
+# configure.ac, m4 files, etc.
+sed -i 's/-flto"$/-flto=auto"/' ./configure
+## build_prepend end
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1594254561
+export SOURCE_DATE_EPOCH=1623194873
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -120,7 +143,7 @@ export CFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-m
 export FCFLAGS="$FFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -fzero-call-used-regs=used "
 export FFLAGS="$FFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -fzero-call-used-regs=used "
 export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -fzero-call-used-regs=used "
-%configure --disable-static --with-libtiff=yes \
+%reconfigure --disable-static --with-libtiff=yes \
 --with-png=yes \
 --with-spatialite=yes \
 --with-sqlite3=yes \
@@ -130,15 +153,20 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -f
 --with-libjson-c=/usr \
 --with-libtool=yes
 make  %{?_smp_mflags}
-
 unset PKG_CONFIG_PATH
 pushd ../buildavx2/
+## build_prepend content
+sed -i 's/-flto"$/-flto=auto"/' ./configure.ac
+# Also patch the generated configure script, in case we stop patching
+# configure.ac, m4 files, etc.
+sed -i 's/-flto"$/-flto=auto"/' ./configure
+## build_prepend end
 export CFLAGS="$CFLAGS -m64 -march=haswell"
 export CXXFLAGS="$CXXFLAGS -m64 -march=haswell"
 export FFLAGS="$FFLAGS -m64 -march=haswell"
 export FCFLAGS="$FCFLAGS -m64 -march=haswell"
 export LDFLAGS="$LDFLAGS -m64 -march=haswell"
-%configure --disable-static --with-libtiff=yes \
+%reconfigure --disable-static --with-libtiff=yes \
 --with-png=yes \
 --with-spatialite=yes \
 --with-sqlite3=yes \
@@ -149,8 +177,9 @@ export LDFLAGS="$LDFLAGS -m64 -march=haswell"
 --with-libtool=yes
 make  %{?_smp_mflags}
 popd
+
 %install
-export SOURCE_DATE_EPOCH=1594254561
+export SOURCE_DATE_EPOCH=1623194873
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gdal
 cp %{_builddir}/gdal-3.1.2/LICENSE.TXT %{buildroot}/usr/share/package-licenses/gdal/3c5056c99522acf3d9e2c2a2f61fdeeffced4174
