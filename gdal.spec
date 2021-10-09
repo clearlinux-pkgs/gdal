@@ -4,7 +4,7 @@
 #
 Name     : gdal
 Version  : 3.1.2
-Release  : 35
+Release  : 36
 URL      : https://download.osgeo.org/gdal/3.1.2/gdal-3.1.2.tar.xz
 Source0  : https://download.osgeo.org/gdal/3.1.2/gdal-3.1.2.tar.xz
 Summary  : Geospatial Data Abstraction Library
@@ -12,6 +12,7 @@ Group    : Development/Tools
 License  : Apache-2.0 BSD-3-Clause ISC LGPL-2.0 Libpng MIT Public-Domain Qhull
 Requires: gdal-bin = %{version}-%{release}
 Requires: gdal-data = %{version}-%{release}
+Requires: gdal-filemap = %{version}-%{release}
 Requires: gdal-lib = %{version}-%{release}
 Requires: gdal-license = %{version}-%{release}
 BuildRequires : SFCGAL-dev
@@ -66,6 +67,7 @@ Summary: bin components for the gdal package.
 Group: Binaries
 Requires: gdal-data = %{version}-%{release}
 Requires: gdal-license = %{version}-%{release}
+Requires: gdal-filemap = %{version}-%{release}
 
 %description bin
 bin components for the gdal package.
@@ -92,11 +94,20 @@ Requires: gdal = %{version}-%{release}
 dev components for the gdal package.
 
 
+%package filemap
+Summary: filemap components for the gdal package.
+Group: Default
+
+%description filemap
+filemap components for the gdal package.
+
+
 %package lib
 Summary: lib components for the gdal package.
 Group: Libraries
 Requires: gdal-data = %{version}-%{release}
 Requires: gdal-license = %{version}-%{release}
+Requires: gdal-filemap = %{version}-%{release}
 
 %description lib
 lib components for the gdal package.
@@ -134,15 +145,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1623194873
+export SOURCE_DATE_EPOCH=1633749781
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -fzero-call-used-regs=used "
-export FCFLAGS="$FFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -fzero-call-used-regs=used "
-export FFLAGS="$FFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -fzero-call-used-regs=used "
-export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -fzero-call-used-regs=used "
+export CFLAGS="$CFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -fstack-protector-strong -fzero-call-used-regs=used -mprefer-vector-width=256 "
+export FCFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -fstack-protector-strong -fzero-call-used-regs=used -mprefer-vector-width=256 "
+export FFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -fstack-protector-strong -fzero-call-used-regs=used -mprefer-vector-width=256 "
+export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -fstack-protector-strong -fzero-call-used-regs=used -mprefer-vector-width=256 "
 %reconfigure --disable-static --with-libtiff=yes \
 --with-png=yes \
 --with-spatialite=yes \
@@ -161,11 +172,11 @@ sed -i 's/-flto"$/-flto=auto"/' ./configure.ac
 # configure.ac, m4 files, etc.
 sed -i 's/-flto"$/-flto=auto"/' ./configure
 ## build_prepend end
-export CFLAGS="$CFLAGS -m64 -march=haswell"
-export CXXFLAGS="$CXXFLAGS -m64 -march=haswell"
-export FFLAGS="$FFLAGS -m64 -march=haswell"
-export FCFLAGS="$FCFLAGS -m64 -march=haswell"
-export LDFLAGS="$LDFLAGS -m64 -march=haswell"
+export CFLAGS="$CFLAGS -m64 -march=x86-64-v3"
+export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3"
+export FFLAGS="$FFLAGS -m64 -march=x86-64-v3"
+export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3"
+export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3"
 %reconfigure --disable-static --with-libtiff=yes \
 --with-png=yes \
 --with-spatialite=yes \
@@ -179,7 +190,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1623194873
+export SOURCE_DATE_EPOCH=1633749781
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gdal
 cp %{_builddir}/gdal-3.1.2/LICENSE.TXT %{buildroot}/usr/share/package-licenses/gdal/3c5056c99522acf3d9e2c2a2f61fdeeffced4174
@@ -198,7 +209,8 @@ cp %{_builddir}/gdal-3.1.2/port/LICENCE_minizip %{buildroot}/usr/share/package-l
 cp %{_builddir}/gdal-3.1.2/third_party/LercLib/LICENSE %{buildroot}/usr/share/package-licenses/gdal/3035b519169390d1aaa3a43267deaae5cdff8a9b
 cp %{_builddir}/gdal-3.1.2/third_party/LercLib/NOTICE %{buildroot}/usr/share/package-licenses/gdal/4e8e03579f57bab9de5401be3fb96344f0823ead
 pushd ../buildavx2/
-%make_install_avx2
+%make_install_v3
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 popd
 %make_install
 ## Remove excluded files
@@ -234,39 +246,13 @@ rm -f %{buildroot}/usr/etc/bash_completion.d/gdal-bash-completion.sh
 /usr/bin/gdalwarp
 /usr/bin/gnmanalyse
 /usr/bin/gnmmanage
-/usr/bin/haswell/gdal_contour
-/usr/bin/haswell/gdal_grid
-/usr/bin/haswell/gdal_rasterize
-/usr/bin/haswell/gdal_translate
-/usr/bin/haswell/gdal_viewshed
-/usr/bin/haswell/gdaladdo
-/usr/bin/haswell/gdalbuildvrt
-/usr/bin/haswell/gdaldem
-/usr/bin/haswell/gdalenhance
-/usr/bin/haswell/gdalinfo
-/usr/bin/haswell/gdallocationinfo
-/usr/bin/haswell/gdalmanage
-/usr/bin/haswell/gdalmdiminfo
-/usr/bin/haswell/gdalmdimtranslate
-/usr/bin/haswell/gdalserver
-/usr/bin/haswell/gdalsrsinfo
-/usr/bin/haswell/gdaltindex
-/usr/bin/haswell/gdaltransform
-/usr/bin/haswell/gdalwarp
-/usr/bin/haswell/gnmanalyse
-/usr/bin/haswell/gnmmanage
-/usr/bin/haswell/nearblack
-/usr/bin/haswell/ogr2ogr
-/usr/bin/haswell/ogrinfo
-/usr/bin/haswell/ogrlineref
-/usr/bin/haswell/ogrtindex
-/usr/bin/haswell/testepsg
 /usr/bin/nearblack
 /usr/bin/ogr2ogr
 /usr/bin/ogrinfo
 /usr/bin/ogrlineref
 /usr/bin/ogrtindex
 /usr/bin/testepsg
+/usr/share/clear/optimized-elf/bin*
 
 %files data
 %defattr(-,root,root,-)
@@ -417,16 +403,18 @@ rm -f %{buildroot}/usr/etc/bash_completion.d/gdal-bash-completion.sh
 /usr/include/ogrsf_frmts.h
 /usr/include/rawdataset.h
 /usr/include/vrtdataset.h
-/usr/lib64/haswell/libgdal.so
 /usr/lib64/libgdal.so
 /usr/lib64/pkgconfig/gdal.pc
 
+%files filemap
+%defattr(-,root,root,-)
+/usr/share/clear/filemap/filemap-gdal
+
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/haswell/libgdal.so.27
-/usr/lib64/haswell/libgdal.so.27.0.2
 /usr/lib64/libgdal.so.27
 /usr/lib64/libgdal.so.27.0.2
+/usr/share/clear/optimized-elf/lib*
 
 %files license
 %defattr(0644,root,root,0755)
