@@ -4,7 +4,7 @@
 #
 Name     : gdal
 Version  : 3.1.2
-Release  : 39
+Release  : 40
 URL      : https://download.osgeo.org/gdal/3.1.2/gdal-3.1.2.tar.xz
 Source0  : https://download.osgeo.org/gdal/3.1.2/gdal-3.1.2.tar.xz
 Summary  : Geospatial Data Abstraction Library
@@ -16,7 +16,6 @@ Requires: gdal-filemap = %{version}-%{release}
 Requires: gdal-lib = %{version}-%{release}
 Requires: gdal-license = %{version}-%{release}
 BuildRequires : SFCGAL-dev
-BuildRequires : apache-ant
 BuildRequires : automake
 BuildRequires : automake-dev
 BuildRequires : buildreq-cpan
@@ -145,7 +144,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1634688713
+export SOURCE_DATE_EPOCH=1639779948
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -190,7 +189,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1634688713
+export SOURCE_DATE_EPOCH=1639779948
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gdal
 cp %{_builddir}/gdal-3.1.2/LICENSE.TXT %{buildroot}/usr/share/package-licenses/gdal/3c5056c99522acf3d9e2c2a2f61fdeeffced4174
