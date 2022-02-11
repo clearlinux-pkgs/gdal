@@ -1,4 +1,4 @@
-3.1.2
+3.4.1
 SFCGAL-dev
 curl-dev
 expat-dev
@@ -9,6 +9,7 @@ libwebp-dev
 ocl-icd-dev
 openssl-dev
 pcre-dev
+pcre2-dev
 qhull-dev
 unixODBC-dev
 xerces-c-dev

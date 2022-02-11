@@ -1,6 +1,6 @@
-0001-Fix-compilation-error-on-json-c-external-link.patch
-0002-Add-some-missing-limits-includes.patch
-0003-EXR-fix-build-against-OpenEXR-3.0.1-fixes-3770.patch
-0004-Workaround-for-inability-to-run-autoreconf.patch
-0005-Fix-configure-check-for-openexr-3.patch
-0006-Unix-build-fix-detection-of-minor-version-number-of-.patch
+#0001-Fix-compilation-error-on-json-c-external-link.patch
+#0002-Add-some-missing-limits-includes.patch
+#0003-EXR-fix-build-against-OpenEXR-3.0.1-fixes-3770.patch
+#0004-Workaround-for-inability-to-run-autoreconf.patch
+#0005-Fix-configure-check-for-openexr-3.patch
+#0006-Unix-build-fix-detection-of-minor-version-number-of-.patch

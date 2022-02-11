@@ -12,17 +12,17 @@ libgeotiff.so.5
 libgif.so.7
 libhdf5.so.103
 libjpeg.so.62
-libjson-c.so.4
+libjson-c.so.5
 libm.so.6
 libmvec.so.1
 libodbc.so.2
 libodbcinst.so.2
-libpcre.so.1
+libpcre2-8.so.0
 libpng16.so.16
-libpoppler.so.112
+libpoppler.so.117
 libpq.so.5
 libproj.so.19
-libqhull.so.7
+libqhull_r.so.7
 libspatialite.so.7
 libsqlite3.so.0
 libstdc++.so.6
@@ -31,3 +31,4 @@ libwebp.so.7
 libxerces-c-3.2.so
 libxml2.so.2
 libz.so.1
+libzstd.so.1

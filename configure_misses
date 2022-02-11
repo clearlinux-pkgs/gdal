@@ -1,25 +1,47 @@
 Configure miss: CharLS/charls.h
 Configure miss: CharLS/charls.h
+Configure miss: CharLS/charls.h presence
+Configure miss: CharLS/charls.h presence
+Configure miss: CharLS/charls.h usability
+Configure miss: CharLS/charls.h usability
 Configure miss: CharLS/interface.h
 Configure miss: CharLS/interface.h
+Configure miss: CharLS/interface.h presence
+Configure miss: CharLS/interface.h presence
+Configure miss: CharLS/interface.h usability
+Configure miss: CharLS/interface.h usability
 Configure miss: FMEObjects
 Configure miss: FMEObjects
-Configure miss: FreeXL support... checking for freexl.h
-Configure miss: FreeXL support... checking for freexl.h
+Configure miss: FreeXL support... checking freexl.h usability
+Configure miss: FreeXL support... checking freexl.h usability
 Configure miss: G_gisinit_2 in -lgrass5
 Configure miss: G_gisinit_2 in -lgrass5
 Configure miss: Google libkml
 Configure miss: Google libkml
 Configure miss: HDF5
 Configure miss: HDF5
+Configure miss: HEIF
+Configure miss: HEIF
+Configure miss: ImfTiledInputReadTile in -lIlmImf
+Configure miss: ImfTiledInputReadTile in -lIlmImf
 Configure miss: Ingres
 Configure miss: Ingres
 Configure miss: JP2Lura support... checking for MSG
 Configure miss: JP2Lura support... checking for MSG
 Configure miss: Kakadu JPEG2000 support
 Configure miss: Kakadu JPEG2000 support
+Configure miss: LERC... checking for lerc_decode in -l"LercLib"
+Configure miss: LERC... checking for lerc_decode in -l"LercLib"
 Configure miss: LIBKML
 Configure miss: LIBKML
+Configure miss: LZ4_decompress_safe in -llz4
+Configure miss: LZ4_decompress_safe in -llz4
+Configure miss: Lerc_c_api.h
+Configure miss: Lerc_c_api.h
+Configure miss: Lerc_c_api.h presence
+Configure miss: Lerc_c_api.h presence
+Configure miss: Lerc_c_api.h usability
+Configure miss: Lerc_c_api.h usability
 Configure miss: MONGOCXXV3
 Configure miss: MONGOCXXV3
 Configure miss: Mopen in -lcsf
@@ -46,18 +68,44 @@ Configure miss: SDreaddata in -lmfhdf
 Configure miss: SDreaddata in -lmfhdf
 Configure miss: SDreaddata in -lmfhdfalt
 Configure miss: SDreaddata in -lmfhdfalt
+Configure miss: blosc_cbuffer_validate in -lblosc
+Configure miss: blosc_cbuffer_validate in -lblosc
 Configure miss: charls/version.h
 Configure miss: charls/version.h
+Configure miss: charls/version.h presence
+Configure miss: charls/version.h presence
+Configure miss: charls/version.h usability
+Configure miss: charls/version.h usability
 Configure miss: cryptopp
 Configure miss: cryptopp
 Configure miss: csf.h
 Configure miss: csf.h
+Configure miss: csf.h presence
+Configure miss: csf.h presence
+Configure miss: csf.h usability
+Configure miss: csf.h usability
 Configure miss: dbmalloc.h
 Configure miss: dbmalloc.h
+Configure miss: dbmalloc.h presence
+Configure miss: dbmalloc.h presence
+Configure miss: dbmalloc.h usability
+Configure miss: dbmalloc.h usability
+Configure miss: direct.h presence
+Configure miss: direct.h presence
+Configure miss: direct.h usability
+Configure miss: direct.h usability
 Configure miss: ecs.h
 Configure miss: ecs.h
+Configure miss: ecs.h presence
+Configure miss: ecs.h presence
+Configure miss: ecs.h usability
+Configure miss: ecs.h usability
 Configure miss: ffopen in -lcfitsio
 Configure miss: ffopen in -lcfitsio
+Configure miss: freexl.h
+Configure miss: freexl.h
+Configure miss: freexl.h presence
+Configure miss: freexl.h presence
 Configure miss: freexl_open in -lfreexl
 Configure miss: freexl_open in -lfreexl
 Configure miss: freexl_open in -lfreexl
@@ -68,10 +116,6 @@ Configure miss: freexl_open in -lfreexl
 Configure miss: freexl_open in -lfreexl
 Configure miss: freexl_open in -lfreexl
 Configure miss: freexl_open in -lfreexl
-Configure miss: g++ option to enable C++11 features
-Configure miss: g++ option to enable C++11 features
-Configure miss: gcc options needed to detect all undeclared functions
-Configure miss: gcc options needed to detect all undeclared functions
 Configure miss: gta_version in -lgta
 Configure miss: gta_version in -lgta
 Configure miss: if Oracle support is enabled
@@ -92,6 +136,16 @@ Configure miss: kea
 Configure miss: kea
 Configure miss: kea-config
 Configure miss: kea-config
+Configure miss: lerc_decode in -l"Lerc"
+Configure miss: lerc_decode in -l"Lerc"
+Configure miss: libdeflate.h
+Configure miss: libdeflate.h
+Configure miss: libdeflate.h presence
+Configure miss: libdeflate.h presence
+Configure miss: libdeflate.h usability
+Configure miss: libdeflate.h usability
+Configure miss: libdeflate_zlib_decompress in -ldeflate
+Configure miss: libdeflate_zlib_decompress in -ldeflate
 Configure miss: local include/lib path
 Configure miss: local include/lib path
 Configure miss: nc-config
@@ -100,8 +154,6 @@ Configure miss: nc_open in -lnetcdf
 Configure miss: nc_open in -lnetcdf
 Configure miss: pgx_decode in -ljasper
 Configure miss: pgx_decode in -ljasper
-Configure miss: qhull/libqhull.h
-Configure miss: qhull/libqhull.h
 Configure miss: rdb_library_name in -lrdb
 Configure miss: rdb_library_name in -lrdb
 Configure miss: tiledb_coords in -ltiledb
