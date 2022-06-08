@@ -1,10 +1,6 @@
 ld-linux-x86-64.so.2
-libIex-3_1.so.30
-libIlmThread-3_1.so.30
 libImath-3_1.so.29
 libOpenEXR-3_1.so.30
-libOpenEXRCore-3_1.so.30
-libOpenEXRUtil-3_1.so.30
 libSFCGAL.so.1
 libc.so.6
 libcrypto.so.1.1
@@ -26,6 +22,7 @@ libpng16.so.16
 libpoppler.so.122
 libpq.so.5
 libproj.so.19
+libqhull_r.so.7
 libspatialite.so.7
 libsqlite3.so.0
 libstdc++.so.6

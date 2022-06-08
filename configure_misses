@@ -1,5 +1,21 @@
+Configure miss: CharLS/charls.h
+Configure miss: CharLS/charls.h
+Configure miss: CharLS/charls.h presence
+Configure miss: CharLS/charls.h presence
+Configure miss: CharLS/charls.h usability
+Configure miss: CharLS/charls.h usability
+Configure miss: CharLS/interface.h
+Configure miss: CharLS/interface.h
+Configure miss: CharLS/interface.h presence
+Configure miss: CharLS/interface.h presence
+Configure miss: CharLS/interface.h usability
+Configure miss: CharLS/interface.h usability
+Configure miss: FMEObjects
+Configure miss: FMEObjects
 Configure miss: FreeXL support... checking freexl.h usability
 Configure miss: FreeXL support... checking freexl.h usability
+Configure miss: G_gisinit_2 in -lgrass5
+Configure miss: G_gisinit_2 in -lgrass5
 Configure miss: Google libkml
 Configure miss: Google libkml
 Configure miss: HDF5
@@ -8,6 +24,8 @@ Configure miss: HEIF
 Configure miss: HEIF
 Configure miss: ImfTiledInputReadTile in -lIlmImf
 Configure miss: ImfTiledInputReadTile in -lIlmImf
+Configure miss: Ingres
+Configure miss: Ingres
 Configure miss: JP2Lura support... checking for MSG
 Configure miss: JP2Lura support... checking for MSG
 Configure miss: Kakadu JPEG2000 support
@@ -40,10 +58,6 @@ Configure miss: OPENJPEG
 Configure miss: OPENJPEG
 Configure miss: OpenCL support
 Configure miss: OpenCL support
-Configure miss: QHULL
-Configure miss: QHULL
-Configure miss: SAP HANA
-Configure miss: SAP HANA
 Configure miss: SDreaddata in -lhdf4
 Configure miss: SDreaddata in -lhdf4
 Configure miss: SDreaddata in -lmfhdf
@@ -56,6 +70,12 @@ Configure miss: SDreaddata in -lmfhdfalt
 Configure miss: SDreaddata in -lmfhdfalt
 Configure miss: blosc_cbuffer_validate in -lblosc
 Configure miss: blosc_cbuffer_validate in -lblosc
+Configure miss: charls/version.h
+Configure miss: charls/version.h
+Configure miss: charls/version.h presence
+Configure miss: charls/version.h presence
+Configure miss: charls/version.h usability
+Configure miss: charls/version.h usability
 Configure miss: cryptopp
 Configure miss: cryptopp
 Configure miss: csf.h
@@ -64,6 +84,12 @@ Configure miss: csf.h presence
 Configure miss: csf.h presence
 Configure miss: csf.h usability
 Configure miss: csf.h usability
+Configure miss: dbmalloc.h
+Configure miss: dbmalloc.h
+Configure miss: dbmalloc.h presence
+Configure miss: dbmalloc.h presence
+Configure miss: dbmalloc.h usability
+Configure miss: dbmalloc.h usability
 Configure miss: direct.h presence
 Configure miss: direct.h presence
 Configure miss: direct.h usability
@@ -96,6 +122,16 @@ Configure miss: if Oracle support is enabled
 Configure miss: if Oracle support is enabled
 Configure miss: if Oracle support is enabled
 Configure miss: if Oracle support is enabled
+Configure miss: int16
+Configure miss: int16
+Configure miss: int32
+Configure miss: int32
+Configure miss: int8
+Configure miss: int8
+Configure miss: jp2_decode in -ljasper
+Configure miss: jp2_decode in -ljasper
+Configure miss: jpc_decode in -ljasper
+Configure miss: jpc_decode in -ljasper
 Configure miss: kea
 Configure miss: kea
 Configure miss: kea-config
@@ -110,18 +146,14 @@ Configure miss: libdeflate.h usability
 Configure miss: libdeflate.h usability
 Configure miss: libdeflate_zlib_decompress in -ldeflate
 Configure miss: libdeflate_zlib_decompress in -ldeflate
-Configure miss: libqhull_r/libqhull_r.h
-Configure miss: libqhull_r/libqhull_r.h
-Configure miss: libqhull_r/libqhull_r.h presence
-Configure miss: libqhull_r/libqhull_r.h presence
-Configure miss: libqhull_r/libqhull_r.h usability
-Configure miss: libqhull_r/libqhull_r.h usability
 Configure miss: local include/lib path
 Configure miss: local include/lib path
 Configure miss: nc-config
 Configure miss: nc-config
 Configure miss: nc_open in -lnetcdf
 Configure miss: nc_open in -lnetcdf
+Configure miss: pgx_decode in -ljasper
+Configure miss: pgx_decode in -ljasper
 Configure miss: rdb_library_name in -lrdb
 Configure miss: rdb_library_name in -lrdb
 Configure miss: tiledb_coords in -ltiledb
@@ -150,3 +182,5 @@ Configure miss: whether we should include Armadillo support
 Configure miss: whether we should include Armadillo support
 Configure miss: whether we should include Java support
 Configure miss: whether we should include Java support
+Configure miss: whether we should include MDB support
+Configure miss: whether we should include MDB support
