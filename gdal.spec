@@ -4,7 +4,7 @@
 #
 Name     : gdal
 Version  : 3.4.3
-Release  : 47
+Release  : 48
 URL      : http://download.osgeo.org/gdal/3.4.3/gdal-3.4.3.tar.xz
 Source0  : http://download.osgeo.org/gdal/3.4.3/gdal-3.4.3.tar.xz
 Summary  : Geospatial Data Abstraction Library
@@ -132,7 +132,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1654727435
+export SOURCE_DATE_EPOCH=1656029605
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -177,7 +177,7 @@ export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3"
 make  %{?_smp_mflags}
 popd
 %install
-export SOURCE_DATE_EPOCH=1654727435
+export SOURCE_DATE_EPOCH=1656029605
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gdal
 cp %{_builddir}/gdal-3.4.3/LICENSE.TXT %{buildroot}/usr/share/package-licenses/gdal/3c5056c99522acf3d9e2c2a2f61fdeeffced4174
@@ -204,7 +204,7 @@ rm -f %{buildroot}*/usr/etc/bash_completion.d/gdal-bash-completion.sh
 ## install_append content
 #install -D %{buildroot}/usr/etc/bash_completion.d/gdal-bash-completion.sh %{buildroot}/usr/share/bash-completion/completions/gdal-bash-completion.sh
 ## install_append end
-/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -404,9 +404,11 @@ rm -f %{buildroot}*/usr/etc/bash_completion.d/gdal-bash-completion.sh
 
 %files lib
 %defattr(-,root,root,-)
+/usr/lib64/glibc-hwcaps/x86-64-v3/libgdal.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libgdal.so.30
+/usr/lib64/glibc-hwcaps/x86-64-v3/libgdal.so.30.0.3
 /usr/lib64/libgdal.so.30
 /usr/lib64/libgdal.so.30.0.3
-/usr/share/clear/optimized-elf/lib*
 
 %files license
 %defattr(0644,root,root,0755)
