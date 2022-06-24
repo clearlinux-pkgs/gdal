@@ -4,7 +4,7 @@
 #
 Name     : gdal
 Version  : 3.4.3
-Release  : 48
+Release  : 49
 URL      : http://download.osgeo.org/gdal/3.4.3/gdal-3.4.3.tar.xz
 Source0  : http://download.osgeo.org/gdal/3.4.3/gdal-3.4.3.tar.xz
 Summary  : Geospatial Data Abstraction Library
@@ -132,7 +132,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1656029605
+export SOURCE_DATE_EPOCH=1656111745
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -177,7 +177,7 @@ export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3"
 make  %{?_smp_mflags}
 popd
 %install
-export SOURCE_DATE_EPOCH=1656029605
+export SOURCE_DATE_EPOCH=1656111745
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gdal
 cp %{_builddir}/gdal-3.4.3/LICENSE.TXT %{buildroot}/usr/share/package-licenses/gdal/3c5056c99522acf3d9e2c2a2f61fdeeffced4174
