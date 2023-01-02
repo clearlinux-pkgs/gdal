@@ -1,5 +1,5 @@
 PKG_NAME := gdal
-URL = http://download.osgeo.org/gdal/3.4.3/gdal-3.4.3.tar.xz
+URL = https://download.osgeo.org/gdal/3.6.1/gdal-3.6.1.tar.xz
 ARCHIVES = 
 
 include ../common/Makefile.common
