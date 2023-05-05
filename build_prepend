@@ -1,4 +1,0 @@
-sed -i 's/-flto"$/-flto=auto"/' ./configure.ac
-# Also patch the generated configure script, in case we stop patching
-# configure.ac, m4 files, etc.
-sed -i 's/-flto"$/-flto=auto"/' ./configure

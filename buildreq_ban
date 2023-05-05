@@ -2,3 +2,4 @@
 # undesirable. One entry per line, no whitespace.
 pkgconfig(hdf5)
 pypi(gdal)
+gdal-dev

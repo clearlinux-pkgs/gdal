@@ -1,9 +1,0 @@
---with-libtiff=yes
---with-png=yes
---with-spatialite=yes
---with-sqlite3=yes
---with-poppler=yes
---enable-lto
---with-gif=/usr
---with-libjson-c=/usr
---with-libtool=yes

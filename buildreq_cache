@@ -1,0 +1,8 @@
+3.6.4
+libjpeg-turbo-dev
+ocl-icd-dev
+pcre-dev
+pcre2-dev
+pkgconfig(libpng)
+xz-dev
+zstd-dev
