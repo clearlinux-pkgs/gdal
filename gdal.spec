@@ -4,10 +4,10 @@
 # Using build pattern: cmake
 #
 Name     : gdal
-Version  : 3.6.4
-Release  : 81
-URL      : https://download.osgeo.org/gdal/3.6.4/gdal-3.6.4.tar.xz
-Source0  : https://download.osgeo.org/gdal/3.6.4/gdal-3.6.4.tar.xz
+Version  : 3.7.0
+Release  : 82
+URL      : https://download.osgeo.org/gdal/3.7.0/gdal-3.7.0.tar.xz
+Source0  : https://download.osgeo.org/gdal/3.7.0/gdal-3.7.0.tar.xz
 Summary  : Geospatial Data Abstraction Library
 Group    : Development/Tools
 License  : Apache-2.0 BSD-3-Clause ISC LGPL-2.0 Libpng MIT Public-Domain
@@ -146,15 +146,15 @@ python3 components for the gdal package.
 
 
 %prep
-%setup -q -n gdal-3.6.4
-cd %{_builddir}/gdal-3.6.4
+%setup -q -n gdal-3.7.0
+cd %{_builddir}/gdal-3.7.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1683268653
+export SOURCE_DATE_EPOCH=1683842206
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -187,7 +187,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1683268653
+export SOURCE_DATE_EPOCH=1683842206
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gdal
 cp %{_builddir}/gdal-%{version}/LICENSE.TXT %{buildroot}/usr/share/package-licenses/gdal/51134147a0feb5f2a47099a8b81d33f1099dfd21 || :
@@ -243,6 +243,7 @@ rm -f %{buildroot}*/usr/etc/bash_completion.d/gdal-bash-completion.sh
 /V3/usr/bin/ogrinfo
 /V3/usr/bin/ogrlineref
 /V3/usr/bin/ogrtindex
+/V3/usr/bin/sozip
 /usr/bin/gdal-config
 /usr/bin/gdal2tiles.py
 /usr/bin/gdal2xyz.py
@@ -288,6 +289,7 @@ rm -f %{buildroot}*/usr/etc/bash_completion.d/gdal-bash-completion.sh
 /usr/bin/ogrtindex
 /usr/bin/pct2rgb.py
 /usr/bin/rgb2pct.py
+/usr/bin/sozip
 
 %files data
 %defattr(-,root,root,-)
@@ -341,6 +343,7 @@ rm -f %{buildroot}*/usr/etc/bash_completion.d/gdal-bash-completion.sh
 /usr/share/gdal/epsg.wkt
 /usr/share/gdal/esri_StatePlane_extra.wkt
 /usr/share/gdal/gdalicon.png
+/usr/share/gdal/gdalinfo_output.schema.json
 /usr/share/gdal/gdalmdiminfo_output.schema.json
 /usr/share/gdal/gdalvrt.xsd
 /usr/share/gdal/gml_registry.xml
@@ -362,6 +365,7 @@ rm -f %{buildroot}*/usr/etc/bash_completion.d/gdal-bash-completion.sh
 /usr/share/gdal/grib2_table_4_2_0_191.csv
 /usr/share/gdal/grib2_table_4_2_0_2.csv
 /usr/share/gdal/grib2_table_4_2_0_20.csv
+/usr/share/gdal/grib2_table_4_2_0_21.csv
 /usr/share/gdal/grib2_table_4_2_0_3.csv
 /usr/share/gdal/grib2_table_4_2_0_4.csv
 /usr/share/gdal/grib2_table_4_2_0_5.csv
@@ -383,6 +387,7 @@ rm -f %{buildroot}*/usr/etc/bash_completion.d/gdal-bash-completion.sh
 /usr/share/gdal/grib2_table_4_2_2_3.csv
 /usr/share/gdal/grib2_table_4_2_2_4.csv
 /usr/share/gdal/grib2_table_4_2_2_5.csv
+/usr/share/gdal/grib2_table_4_2_2_6.csv
 /usr/share/gdal/grib2_table_4_2_3_0.csv
 /usr/share/gdal/grib2_table_4_2_3_1.csv
 /usr/share/gdal/grib2_table_4_2_3_2.csv
@@ -446,6 +451,7 @@ rm -f %{buildroot}*/usr/etc/bash_completion.d/gdal-bash-completion.sh
 /usr/share/gdal/netcdf_config.xsd
 /usr/share/gdal/nitf_spec.xml
 /usr/share/gdal/nitf_spec.xsd
+/usr/share/gdal/ogrinfo_output.schema.json
 /usr/share/gdal/ogrvrt.xsd
 /usr/share/gdal/osmconf.ini
 /usr/share/gdal/ozi_datum.csv
@@ -556,10 +562,10 @@ rm -f %{buildroot}*/usr/etc/bash_completion.d/gdal-bash-completion.sh
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libgdal.so.32
-/V3/usr/lib64/libgdal.so.32.3.6.4
-/usr/lib64/libgdal.so.32
-/usr/lib64/libgdal.so.32.3.6.4
+/V3/usr/lib64/libgdal.so.33
+/V3/usr/lib64/libgdal.so.33.3.7.0
+/usr/lib64/libgdal.so.33
+/usr/lib64/libgdal.so.33.3.7.0
 
 %files license
 %defattr(0644,root,root,0755)
@@ -618,6 +624,7 @@ rm -f %{buildroot}*/usr/etc/bash_completion.d/gdal-bash-completion.sh
 /usr/share/man/man1/ogrtindex.1
 /usr/share/man/man1/pct2rgb.1
 /usr/share/man/man1/rgb2pct.1
+/usr/share/man/man1/sozip.1
 
 %files python
 %defattr(-,root,root,-)
