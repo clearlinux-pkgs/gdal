@@ -3,3 +3,4 @@
 pkgconfig(hdf5)
 pypi(gdal)
 gdal-dev
+ocl-icd-dev
