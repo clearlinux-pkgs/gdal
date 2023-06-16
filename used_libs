@@ -16,11 +16,11 @@ libm.so.6
 libpcre2-8.so.0
 libpng16.so.16
 libpoppler.so.129
-libproj.so.19
+libproj.so.25
 libspatialite.so.7
 libsqlite3.so.0
 libstdc++.so.6
-libtiff.so.5
+libtiff.so.6
 libwebp.so.7
 libxml2.so.2
 libz.so.1
