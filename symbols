@@ -2133,6 +2133,7 @@ libgdal.so.33:_Z20OGRGeometryToHexEWKBP11OGRGeometryiii
 libgdal.so.33:_Z20OGRGetRFC822DateTimePK8OGRField
 libgdal.so.33:_Z20OGRMakeWktCoordinateB5cxx11dddi13OGRWktOptions
 libgdal.so.33:_Z20OGRMakeWktCoordinatePcdddi
+libgdal.so.33:_Z20OGRWKBGetBoundingBoxPKhmR11OGREnvelope
 libgdal.so.33:_Z20RoundValueDiscardLsbIaaET0_PKvmm
 libgdal.so.33:_Z20RoundValueDiscardLsbIdmET0_PKvmm
 libgdal.so.33:_Z20RoundValueDiscardLsbIfjET0_PKvmm

@@ -4,10 +4,10 @@
 # Using build pattern: cmake
 #
 Name     : gdal
-Version  : 3.7.0
-Release  : 90
-URL      : https://download.osgeo.org/gdal/3.7.0/gdal-3.7.0.tar.xz
-Source0  : https://download.osgeo.org/gdal/3.7.0/gdal-3.7.0.tar.xz
+Version  : 3.7.1
+Release  : 91
+URL      : https://download.osgeo.org/gdal/3.7.1/gdal-3.7.1.tar.xz
+Source0  : https://download.osgeo.org/gdal/3.7.1/gdal-3.7.1.tar.xz
 Summary  : Geospatial Data Abstraction Library
 Group    : Development/Tools
 License  : Apache-2.0 BSD-3-Clause ISC LGPL-2.0 Libpng MIT Public-Domain
@@ -21,12 +21,12 @@ Requires: gdal-python3 = %{version}-%{release}
 BuildRequires : bison-dev
 BuildRequires : boost-dev
 BuildRequires : buildreq-cmake
+BuildRequires : curl-dev
 BuildRequires : giflib-dev
 BuildRequires : git
 BuildRequires : glibc-dev
 BuildRequires : hdf5-dev
 BuildRequires : libgeotiff-dev
-BuildRequires : libjpeg-turbo-dev
 BuildRequires : openjdk
 BuildRequires : openjdk-dev
 BuildRequires : openjpeg
@@ -53,7 +53,6 @@ BuildRequires : python3
 BuildRequires : python3-dev
 BuildRequires : swig
 BuildRequires : tiff-dev
-BuildRequires : xz-dev
 BuildRequires : zlib-dev
 BuildRequires : zstd-dev
 # Suppress stripping binaries
@@ -145,15 +144,15 @@ python3 components for the gdal package.
 
 
 %prep
-%setup -q -n gdal-3.7.0
-cd %{_builddir}/gdal-3.7.0
+%setup -q -n gdal-3.7.1
+cd %{_builddir}/gdal-3.7.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1686949949
+export SOURCE_DATE_EPOCH=1689346313
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -186,7 +185,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1686949949
+export SOURCE_DATE_EPOCH=1689346313
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gdal
 cp %{_builddir}/gdal-%{version}/LICENSE.TXT %{buildroot}/usr/share/package-licenses/gdal/51134147a0feb5f2a47099a8b81d33f1099dfd21 || :
@@ -345,7 +344,9 @@ rm -f %{buildroot}*/usr/etc/bash_completion.d/gdal-bash-completion.sh
 /usr/share/gdal/gdalinfo_output.schema.json
 /usr/share/gdal/gdalmdiminfo_output.schema.json
 /usr/share/gdal/gdalvrt.xsd
+/usr/share/gdal/gfs.xsd
 /usr/share/gdal/gml_registry.xml
+/usr/share/gdal/gml_registry.xsd
 /usr/share/gdal/gmlasconf.xml
 /usr/share/gdal/gmlasconf.xsd
 /usr/share/gdal/grib2_center.csv
@@ -560,9 +561,9 @@ rm -f %{buildroot}*/usr/etc/bash_completion.d/gdal-bash-completion.sh
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libgdal.so.33.3.7.0
+/V3/usr/lib64/libgdal.so.33.3.7.1
 /usr/lib64/libgdal.so.33
-/usr/lib64/libgdal.so.33.3.7.0
+/usr/lib64/libgdal.so.33.3.7.1
 
 %files license
 %defattr(0644,root,root,0755)
