@@ -5,7 +5,7 @@
 #
 Name     : gdal
 Version  : 3.7.1
-Release  : 94
+Release  : 95
 URL      : https://download.osgeo.org/gdal/3.7.1/gdal-3.7.1.tar.xz
 Source0  : https://download.osgeo.org/gdal/3.7.1/gdal-3.7.1.tar.xz
 Summary  : Geospatial Data Abstraction Library
