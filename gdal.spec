@@ -4,10 +4,10 @@
 # Using build pattern: cmake
 #
 Name     : gdal
-Version  : 3.7.1
-Release  : 95
-URL      : https://download.osgeo.org/gdal/3.7.1/gdal-3.7.1.tar.xz
-Source0  : https://download.osgeo.org/gdal/3.7.1/gdal-3.7.1.tar.xz
+Version  : 3.7.2
+Release  : 96
+URL      : https://download.osgeo.org/gdal/3.7.2/gdal-3.7.2.tar.xz
+Source0  : https://download.osgeo.org/gdal/3.7.2/gdal-3.7.2.tar.xz
 Summary  : Geospatial Data Abstraction Library
 Group    : Development/Tools
 License  : Apache-2.0 BSD-3-Clause ISC LGPL-2.0 Libpng MIT Public-Domain
@@ -145,15 +145,15 @@ python3 components for the gdal package.
 
 
 %prep
-%setup -q -n gdal-3.7.1
-cd %{_builddir}/gdal-3.7.1
+%setup -q -n gdal-3.7.2
+cd %{_builddir}/gdal-3.7.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1691514592
+export SOURCE_DATE_EPOCH=1694617373
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -186,7 +186,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1691514592
+export SOURCE_DATE_EPOCH=1694617373
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gdal
 cp %{_builddir}/gdal-%{version}/LICENSE.TXT %{buildroot}/usr/share/package-licenses/gdal/51134147a0feb5f2a47099a8b81d33f1099dfd21 || :
@@ -562,9 +562,9 @@ rm -f %{buildroot}*/usr/etc/bash_completion.d/gdal-bash-completion.sh
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libgdal.so.33.3.7.1
+/V3/usr/lib64/libgdal.so.33.3.7.2
 /usr/lib64/libgdal.so.33
-/usr/lib64/libgdal.so.33.3.7.1
+/usr/lib64/libgdal.so.33.3.7.2
 
 %files license
 %defattr(0644,root,root,0755)
