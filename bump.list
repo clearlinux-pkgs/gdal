@@ -1,3 +1,6 @@
 R-rgdal
 R-sf
 R-terra
+PDAL
+grass
+postgis
