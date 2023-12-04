@@ -6,10 +6,10 @@
 # autospec commit: e661f3a
 #
 Name     : gdal
-Version  : 3.8.0
-Release  : 102
-URL      : https://download.osgeo.org/gdal/3.8.0/gdal-3.8.0.tar.xz
-Source0  : https://download.osgeo.org/gdal/3.8.0/gdal-3.8.0.tar.xz
+Version  : 3.8.1
+Release  : 103
+URL      : https://download.osgeo.org/gdal/3.8.1/gdal-3.8.1.tar.xz
+Source0  : https://download.osgeo.org/gdal/3.8.1/gdal-3.8.1.tar.xz
 Summary  : Geospatial Data Abstraction Library
 Group    : Development/Tools
 License  : Apache-2.0 BSD-3-Clause ISC LGPL-2.0 Libpng MIT Public-Domain
@@ -147,15 +147,15 @@ python3 components for the gdal package.
 
 
 %prep
-%setup -q -n gdal-3.8.0
-cd %{_builddir}/gdal-3.8.0
+%setup -q -n gdal-3.8.1
+cd %{_builddir}/gdal-3.8.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1699911164
+export SOURCE_DATE_EPOCH=1701712907
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -214,7 +214,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1699911164
+export SOURCE_DATE_EPOCH=1701712907
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gdal
 cp %{_builddir}/gdal-%{version}/LICENSE.TXT %{buildroot}/usr/share/package-licenses/gdal/51134147a0feb5f2a47099a8b81d33f1099dfd21 || :
@@ -225,6 +225,7 @@ cp %{_builddir}/gdal-%{version}/frmts/png/libpng/LICENSE %{buildroot}/usr/share/
 cp %{_builddir}/gdal-%{version}/ogr/ogrsf_frmts/flatgeobuf/LICENSE %{buildroot}/usr/share/package-licenses/gdal/161732baff9a38188301a521b567a20245367c7e || :
 cp %{_builddir}/gdal-%{version}/ogr/ogrsf_frmts/flatgeobuf/flatbuffers/LICENSE %{buildroot}/usr/share/package-licenses/gdal/abb8eb20f7f319cd8b292cdccce15826bac01363 || :
 cp %{_builddir}/gdal-%{version}/ogr/ogrsf_frmts/geojson/libjson/COPYING %{buildroot}/usr/share/package-licenses/gdal/0cd23537e3c32497c7b87157b36f9d2eb5fca64b || :
+cp %{_builddir}/gdal-%{version}/ogr/ogrsf_frmts/pmtiles/pmtiles/LICENSE %{buildroot}/usr/share/package-licenses/gdal/7a081f74aa51f66c8f5b2b7d9220b0d2c03693f1 || :
 cp %{_builddir}/gdal-%{version}/ogr/ogrsf_frmts/shape/COPYING %{buildroot}/usr/share/package-licenses/gdal/df97bdf33b01f9ed42a799dd3ed7a1599dd0cb9d || :
 cp %{_builddir}/gdal-%{version}/port/LICENCE_minizip %{buildroot}/usr/share/package-licenses/gdal/f7f1d88d0aea6c567a2c351b08b0fe80f2582054 || :
 cp %{_builddir}/gdal-%{version}/third_party/LercLib/LICENSE %{buildroot}/usr/share/package-licenses/gdal/3035b519169390d1aaa3a43267deaae5cdff8a9b || :
@@ -594,9 +595,9 @@ rm -f %{buildroot}*/usr/etc/bash_completion.d/gdal-bash-completion.sh
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libgdal.so.34.3.8.0
+/V3/usr/lib64/libgdal.so.34.3.8.1
 /usr/lib64/libgdal.so.34
-/usr/lib64/libgdal.so.34.3.8.0
+/usr/lib64/libgdal.so.34.3.8.1
 
 %files license
 %defattr(0644,root,root,0755)
@@ -606,6 +607,7 @@ rm -f %{buildroot}*/usr/etc/bash_completion.d/gdal-bash-completion.sh
 /usr/share/package-licenses/gdal/1d982db70b88f943cc7d15013c28a126339d6cbc
 /usr/share/package-licenses/gdal/3035b519169390d1aaa3a43267deaae5cdff8a9b
 /usr/share/package-licenses/gdal/51134147a0feb5f2a47099a8b81d33f1099dfd21
+/usr/share/package-licenses/gdal/7a081f74aa51f66c8f5b2b7d9220b0d2c03693f1
 /usr/share/package-licenses/gdal/abb8eb20f7f319cd8b292cdccce15826bac01363
 /usr/share/package-licenses/gdal/df97bdf33b01f9ed42a799dd3ed7a1599dd0cb9d
 /usr/share/package-licenses/gdal/f7f1d88d0aea6c567a2c351b08b0fe80f2582054
