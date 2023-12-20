@@ -6,10 +6,10 @@
 # autospec commit: c1050fe
 #
 Name     : gdal
-Version  : 3.8.1
-Release  : 106
-URL      : https://download.osgeo.org/gdal/3.8.1/gdal-3.8.1.tar.xz
-Source0  : https://download.osgeo.org/gdal/3.8.1/gdal-3.8.1.tar.xz
+Version  : 3.8.2
+Release  : 107
+URL      : https://download.osgeo.org/gdal/3.8.2/gdal-3.8.2.tar.xz
+Source0  : https://download.osgeo.org/gdal/3.8.2/gdal-3.8.2.tar.xz
 Summary  : Geospatial Data Abstraction Library
 Group    : Development/Tools
 License  : Apache-2.0 BSD-3-Clause ISC LGPL-2.0 Libpng MIT Public-Domain
@@ -63,13 +63,10 @@ BuildRequires : zstd-dev
 %define debug_package %{nil}
 
 %description
-The following source files are taken from the HDF-EOS package
-EHapi.c,
-GDapi.c,
-SWapi.c,
-HDFEOSVersion.h,
-HdfEosDef.h,
-ease.h
+Building on Unix with gcc and autotools
+If checking out from CVS:
+sh autogen.sh
+Then configure, make, make install
 
 %package bin
 Summary: bin components for the gdal package.
@@ -147,15 +144,15 @@ python3 components for the gdal package.
 
 
 %prep
-%setup -q -n gdal-3.8.1
-cd %{_builddir}/gdal-3.8.1
+%setup -q -n gdal-3.8.2
+cd %{_builddir}/gdal-3.8.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1701959047
+export SOURCE_DATE_EPOCH=1703109645
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -214,7 +211,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1701959047
+export SOURCE_DATE_EPOCH=1703109645
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gdal
 cp %{_builddir}/gdal-%{version}/LICENSE.TXT %{buildroot}/usr/share/package-licenses/gdal/51134147a0feb5f2a47099a8b81d33f1099dfd21 || :
@@ -595,9 +592,9 @@ rm -f %{buildroot}*/usr/etc/bash_completion.d/gdal-bash-completion.sh
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libgdal.so.34.3.8.1
+/V3/usr/lib64/libgdal.so.34.3.8.2
 /usr/lib64/libgdal.so.34
-/usr/lib64/libgdal.so.34.3.8.1
+/usr/lib64/libgdal.so.34.3.8.2
 
 %files license
 %defattr(0644,root,root,0755)
