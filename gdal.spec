@@ -9,7 +9,7 @@
 #
 Name     : gdal
 Version  : 3.8.4
-Release  : 116
+Release  : 117
 URL      : https://download.osgeo.org/gdal/CURRENT/gdal-3.8.4.tar.xz
 Source0  : https://download.osgeo.org/gdal/CURRENT/gdal-3.8.4.tar.xz
 Source1  : https://download.osgeo.org/gdal/CURRENT/gdal-3.8.4.tar.xz.sig
