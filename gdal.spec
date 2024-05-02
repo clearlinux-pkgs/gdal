@@ -9,7 +9,7 @@
 #
 Name     : gdal
 Version  : 3.8.5
-Release  : 121
+Release  : 122
 URL      : https://download.osgeo.org/gdal/CURRENT/gdal-3.8.5.tar.gz
 Source0  : https://download.osgeo.org/gdal/CURRENT/gdal-3.8.5.tar.gz
 Source1  : https://download.osgeo.org/gdal/CURRENT/gdal-3.8.5.tar.gz.sig
@@ -66,6 +66,7 @@ BuildRequires : zstd-dev
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
+Patch1: 0001-Require-C-20-for-poppler.patch
 
 %description
 Building on Unix with gcc and autotools
@@ -156,13 +157,14 @@ gpg --homedir .gnupg --status-fd 1 --verify %{SOURCE1} %{SOURCE0} > gpg.status
 grep -E '^\[GNUPG:\] (GOODSIG|EXPKEYSIG) 33EBBFC47B3DD87D' gpg.status
 %setup -q -n gdal-3.8.5
 cd %{_builddir}/gdal-3.8.5
+%patch -P 1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1713289710
+export SOURCE_DATE_EPOCH=1714691874
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -223,7 +225,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1713289710
+export SOURCE_DATE_EPOCH=1714691874
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gdal
 cp %{_builddir}/gdal-%{version}/LICENSE.TXT %{buildroot}/usr/share/package-licenses/gdal/51134147a0feb5f2a47099a8b81d33f1099dfd21 || :
