@@ -1,0 +1,5 @@
+3.8.5
+pcre-dev
+pcre2-dev
+pkgconfig(libpng)
+zstd-dev
