@@ -1,25 +1,26 @@
-From ddf97243aedab7741ed7cee66ccc342585c2a814 Mon Sep 17 00:00:00 2001
+From a63f97e2b398363fb4fc4584583d001cbf7d42d8 Mon Sep 17 00:00:00 2001
 From: William Douglas <william.douglas@intel.com>
-Date: Thu, 2 May 2024 15:50:35 -0700
-Subject: [PATCH] Require C++20 for poppler
+Date: Tue, 30 Jul 2024 09:00:54 -0700
+Subject: [PATCH] Require C++ 20 for poppler
 
+Signed-off-by: William Douglas <william.douglas@intel.com>
 ---
  CMakeLists.txt | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 2382743..6e3afb4 100644
+index f6f81c1..eafc241 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -38,7 +38,7 @@ define_property(
  #
  # check compiler and set preferences.
  if (NOT CMAKE_CXX_STANDARD)
--    set(CMAKE_CXX_STANDARD 11)
+-    set(CMAKE_CXX_STANDARD 17)
 +    set(CMAKE_CXX_STANDARD 20)
      set(CMAKE_CXX_STANDARD_REQUIRED ON)
  endif()
  
 -- 
-2.44.0
+2.45.2
 

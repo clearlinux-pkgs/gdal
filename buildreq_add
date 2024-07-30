@@ -1,8 +1,9 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
+giflib-dev
 hdf5-dev
 libgeotiff-dev
-tiff-dev
-proj-dev
 proj
-giflib-dev
+proj-dev
+pypi-numpy
+tiff-dev

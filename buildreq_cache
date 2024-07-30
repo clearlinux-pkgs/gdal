@@ -1,5 +1,6 @@
-3.8.5
+3.9.1
 pcre-dev
 pcre2-dev
 pkgconfig(libpng)
+python3-dev
 zstd-dev
