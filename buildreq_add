@@ -3,6 +3,7 @@
 giflib-dev
 hdf5-dev
 libgeotiff-dev
+poppler-dev
 proj
 proj-dev
 pypi-numpy
